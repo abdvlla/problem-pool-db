@@ -1,0 +1,86 @@
+<section class="dark:bg-gray-900">
+    <div class="px-4 mx-auto max-w-2xl lg:py-8 rounded overflow-hidden shadow-lg">
+        <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
+            <div class="sm:col-span-2">
+                <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Customer
+                    Name</label>
+                <input type="text" value="<%= pool.name %>" name="name" id="name"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                    placeholder="Name of Customer">
+            </div>
+            <div class="w-full">
+                <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
+                <input type="email" name="email" id="email"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                    placeholder="Email" value="<%= pool.email %>">
+            </div>
+            <div class="w-full">
+                <label for="number" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone
+                    #</label>
+                <input type="text" name="number" id="number"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                    placeholder="(902) XXX-XXXX" value="<%= pool.number %>">
+            </div>
+            <div>
+                <label for="bodyOfWater" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Body of
+                    Water</label>
+                <select id="bodyOfWater" name="bodyOfWater"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                    <option label="IG" value="IG" <%= pool.bodyOfWater==='IG' ? 'selected' : '' %>>IG</option>
+                    <option label="AG" value="AG" <%= pool.bodyOfWater==='AG' ? 'selected' : '' %>>AG</option>
+                    <option label="OG" value="OG" <%= pool.bodyOfWater==='OG' ? 'selected' : '' %>>OG</option>
+                    <option label="HT" value="HT" <%= pool.bodyOfWater==='HT' ? 'selected' : '' %>>HT</option>
+                    <option label="SS" value="SS" <%= pool.bodyOfWater==='SS' ? 'selected' : '' %>>SS</option>
+                </select>
+            </div>
+            <div>
+                <label for="status" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status</label>
+                <select id="status" name="status"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                    <option label="New BoW" value="New BoW" <%=pool.status==='New BoW' ? 'selected' : '' %>>New BoW</option>
+                    <option label="Received" value="Received" <%=pool.status==='Received' ? 'selected' : '' %>>Received</option>
+                    <option label="Follow-up 1" value="Follow-up 1" <%=pool.status==='Follow-up 1' ? 'selected' : '' %>>Follow-up 1</option>
+                    <option label="Follow-up 2" value="Follow-up 2" <%=pool.status==='Follow-up 2' ? 'selected' : '' %>>Follow-up 2</option>
+                    <option label="Ongoing" value="Ongoing" <%=pool.status==='Ongoing' ? 'selected' : '' %>>Ongoing</option>
+                    <option label="Improving" value="Improving" <%=pool.status==='Improving' ? 'selected' : '' %>>Improving</option>
+                    <option label="No update" value="No update" <%=pool.status==='No update' ? 'selected' : '' %>>No update</option>
+                    <option label="Almost" value="Almost" <%=pool.status==='Almost' ? 'selected' : '' %>>Almost</option>
+                    <option label="Closed" value="Closed" <%=pool.status==='Closed' ? 'selected' : '' %>>Closed</option>
+                </select>
+            </div>
+            <div class="w-full">
+                <label for="system" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">System</label>
+                <input type="text" name="system" id="system"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                    placeholder="Maintenance chemicals" value="<%= pool.system %>">
+            </div>
+            <div class="w-full">
+                <label for="pump" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pump</label>
+                <input type="text" name="pump" id="pump"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                    placeholder="Pool pump" value="<%= pool.pump %>">
+            </div>
+            <div class="w-full">
+                <label for="filter" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Filter</label>
+                <input type="text" name="filter" id="filter"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                    placeholder="Filter type" value="<%= pool.filter %>">
+            </div>
+            <div class="w-full">
+                <label for="heater" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Heater</label>
+                <input type="text" name="heater" id="heater"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                    placeholder="Heating system (if any)" value="<%= pool.heater %>">
+            </div>
+            <div class="sm:col-span-2">
+                <label for="description" name="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
+                <textarea id="description" name="description" rows="8"
+                    class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Details about the pool"><%=pool.description %></textarea>
+            </div>
+            <div class="sm:col-span-2">
+                <label for="cover" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Image</label>
+                <input type="file" name="cover" class="">
+            </div>
+        </div>
+    </div>
+</section>

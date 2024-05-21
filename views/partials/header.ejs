@@ -1,0 +1,16 @@
+<header class="bg-blue-600 text-white">
+  <nav class="container mx-auto py-4">
+    <div class="flex items-center justify-between">
+      <a href="/" class="text-2xl font-semibold">HHL</a>
+      <ul class="flex space-x-4">
+        <li><a href="/pools" class="hover:underline">Pools</a></li>
+        <li><a href="/pools/new" class="hover:underline">Add Pool</a></li>
+        <li>
+          <form id="logout-form" action="/logout?_method=DELETE" method="POST">
+            <button type="submit" class="hover:underline">Logout</button>
+          </form>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>

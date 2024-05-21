@@ -1,0 +1,8 @@
+<script>
+    const activePage = window.location.pathname;
+    const navLinks = document.querySelectorAll('.header-nav a').forEach(link => {
+        if (link.getAttribute('href') === activePage) {
+            link.classList.add('active');
+        }
+    });
+</script>
