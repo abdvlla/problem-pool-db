@@ -12,12 +12,10 @@ const poolSchema = new mongoose.Schema({
 
   number: {
     type: String,
-    required: true,
   },
 
   email: {
     type: String,
-    required: true,
   },
 
   bodyOfWater: {

@@ -1,16 +1,30 @@
-<header class="bg-blue-600 text-white">
-  <nav class="container mx-auto py-4">
-    <div class="flex items-center justify-between">
-      <a href="/" class="text-2xl font-semibold">HHL</a>
-      <ul class="flex space-x-4">
-        <li><a href="/pools" class="hover:underline">Pools</a></li>
-        <li><a href="/pools/new" class="hover:underline">Add Pool</a></li>
-        <li>
-          <form id="logout-form" action="/logout?_method=DELETE" method="POST">
-            <button type="submit" class="hover:underline">Logout</button>
-          </form>
-        </li>
-      </ul>
+<header class="bg-gray-50 border-solid border-2 sticky top-0 z-50">
+  <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
+    <div class="flex lg:flex-1">
+      <a href="/" class="-m-1.5 p-1.5">
+        <span class="sr-only">HHL Home</span>
+        <img class="h-8 w-auto" src="https://poolsuppliesnovascotia.pro/cdn/shop/files/Logo_e26ade37-5699-44c7-831e-4e21036feb4e.jpg?v=1711477056&width=300" alt="">
+      </a>
+    </div>
+    <div class="flex lg:hidden">
+      <button type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
+        <span class="sr-only">Open main menu</span>
+        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+      </button>
+    </div>
+    <div class="hidden lg:flex lg:gap-x-12">
+
+      <a href="/pools" class="text-sm font-semibold leading-6 text-gray-900">All pools</a>
+      <a href="/pools/new" class="text-sm font-semibold leading-6 text-gray-900">New pool</a>
+      <a href="#" class="text-sm font-semibold leading-6 text-gray-900 ">TBD</a>
+    </div>
+    <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+      <form id="logout-form" action="/logout?_method=DELETE" method="POST">
+      <button href="#" class="text-sm font-semibold leading-6 text-gray-900">Log out <span aria-hidden="true">&rarr;</span></button>
+    </form>
     </div>
   </nav>
 </header>
+

@@ -79,8 +79,25 @@
             </div>
             <div class="sm:col-span-2">
                 <label for="cover" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Image</label>
-                <input type="file" name="cover" class="">
+                <input type="file" name="cover" id="cover" class="">
+                <img id="cover-preview" src="<%= pool.coverImagePath %>" class="py-2">
             </div>
         </div>
     </div>
 </section>
+
+<script>
+    const coverInput = document.getElementById('cover');
+    const coverPreview = document.getElementById('cover-preview');
+
+    coverInput.addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+            coverPreview.src = e.target.result;
+        };
+
+        reader.readAsDataURL(file);
+    });
+</script>

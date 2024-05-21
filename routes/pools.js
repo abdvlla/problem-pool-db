@@ -178,12 +178,23 @@ async function renderFormPage(res, pool, form, hasError = false) {
 }
 
 function saveCover(pool, coverEncoded) {
-  if (coverEncoded == null) return
-  const cover = JSON.parse(coverEncoded)
-  if (cover != null && imageMimeTypes.includes(cover.type)) {
-    pool.coverImage = new Buffer.from(cover.data, 'base64')
-    pool.coverImageType = cover.type
+  if (!coverEncoded) return; // If no cover image is provided, exit function
+  
+  try {
+    const cover = JSON.parse(coverEncoded);
+    if (cover && imageMimeTypes.includes(cover.type)) {
+      pool.coverImage = Buffer.from(cover.data, 'base64');
+      pool.coverImageType = cover.type;
+    } else {
+      throw new Error('Invalid cover image data');
+    }
+  } catch (err) {
+    // If parsing as JSON fails, assume coverEncoded is the filename
+    pool.coverImageName = coverEncoded; // Assign the filename directly
+    console.error(err);
+    // Handle error gracefully, e.g., log it or display a message to the user
   }
 }
+
 
 module.exports = router;

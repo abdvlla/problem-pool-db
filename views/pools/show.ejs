@@ -1,10 +1,4 @@
-<div class="btn-row">
-  <a class="btn btn-primary" href="/pools/<%= pool.id %>/edit">Edit</a>
-  <%- include('../partials/deleteForm', { url: `/pools/${pool.id}` }) %>
-</div>
-
-
-<div class="content-center py-8 px-4 mx-auto max-w-4xl lg:py-16">
+<div class="content-center py-4 px-4 mx-auto max-w-4xl">
   <div class="px-4 sm:px-0">
     <h3 class="text-base font-semibold leading-7 text-gray-900 text-center">Pool Information</h3>
   </div>
@@ -23,8 +17,24 @@
         <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><%= pool.number %></dd>
       </div>
       <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-        <dt class="text-sm font-medium leading-6 text-gray-900">Salary expectation</dt>
-        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">$120,000</dd>
+        <dt class="text-sm font-medium leading-6 text-gray-900">Current Status</dt>
+        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0 font-semibold underline"><%= pool.status %></dd>
+      </div>
+      <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+        <dt class="text-sm font-medium leading-6 text-gray-900">System</dt>
+        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><%= pool.system %></dd>
+      </div>
+      <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+        <dt class="text-sm font-medium leading-6 text-gray-900">Pump</dt>
+        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><%= pool.pump %></dd>
+      </div>
+      <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+        <dt class="text-sm font-medium leading-6 text-gray-900">Filter</dt>
+        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><%= pool.filter %></dd>
+      </div>
+      <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+        <dt class="text-sm font-medium leading-6 text-gray-900">Heater</dt>
+        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><%= pool.heater %></dd>
       </div>
       <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
         <dt class="text-sm font-medium leading-6 text-gray-900">Description</dt>
@@ -46,4 +56,9 @@
       </div>
     </dl>
   </div>
+</div>
+
+<div class="py-4 flex justify-center px-10 space-x-2">
+  <a class="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" href="/pools/<%= pool.id %>/edit">Edit</a>
+  <%- include('../partials/deleteForm', { url: `/pools/${pool.id}` }) %>
 </div>
