@@ -53,9 +53,7 @@ router.post('/', ensureAuthenticated, upload.single('cover'), async (req, res) =
     filter: req.body.filter,
     heater: req.body.heater
     
-    
   })
-  saveCover(pool, req.body.cover)
 
   try {
     const newPool = await pool.save()
@@ -89,7 +87,7 @@ router.get('/:id/edit', ensureAuthenticated, async (req, res) => {
   }
 })
 
-router.put('/:id', ensureAuthenticated, async (req, res) => {
+router.put('/:id', upload.single('cover'), ensureAuthenticated, async (req, res) => {
   let pool;
 
   try {
@@ -105,10 +103,13 @@ router.put('/:id', ensureAuthenticated, async (req, res) => {
     pool.filter = req.body.filter;
     pool.heater = req.body.heater;
     
-    if (req.body.cover != null && req.body.cover !== '') {
-      saveCover(pool, req.body.cover);
+    if (req.file) {
+      const fileName = req.file.filename;
+      if (pool.coverImageName) {
+        removePoolCover(pool.coverImageName); // Remove old cover image
+      }
+      pool.coverImageName = fileName; // Update cover image name
     }
-
     await pool.save();
     res.redirect(`/pools/${pool.id}`);
   } catch (err) {
@@ -176,25 +177,5 @@ async function renderFormPage(res, pool, form, hasError = false) {
     res.redirect('/pools')
   }
 }
-
-function saveCover(pool, coverEncoded) {
-  if (!coverEncoded) return; // If no cover image is provided, exit function
-  
-  try {
-    const cover = JSON.parse(coverEncoded);
-    if (cover && imageMimeTypes.includes(cover.type)) {
-      pool.coverImage = Buffer.from(cover.data, 'base64');
-      pool.coverImageType = cover.type;
-    } else {
-      throw new Error('Invalid cover image data');
-    }
-  } catch (err) {
-    // If parsing as JSON fails, assume coverEncoded is the filename
-    pool.coverImageName = coverEncoded; // Assign the filename directly
-    console.error(err);
-    // Handle error gracefully, e.g., log it or display a message to the user
-  }
-}
-
 
 module.exports = router;
