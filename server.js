@@ -11,6 +11,7 @@ const session = require('express-session');
 const methodOverride = require('method-override')
 const expressLayouts = require('express-ejs-layouts')
 const User = require('./models/user');
+const flash = require('express-flash')
 
 // Import initializePassport function
 const initializePassport = require('./routes/passport-setup');
@@ -27,6 +28,7 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash());
 app.use(methodOverride('_method'))
 
 app.set('view engine', 'ejs');
@@ -57,26 +59,26 @@ app.get('/login', ensureNotAuthenticated, (req, res) => {
 });
 
 // Register route
-app.get('/register', ensureNotAuthenticated, (req, res) => {
-  res.render('authentication/register.ejs', { title: 'Register' });
-});
+// app.get('/register', ensureNotAuthenticated, (req, res) => {
+//   res.render('authentication/register.ejs', { title: 'Register' });
+// });
 
 // Registration form submission
-app.post('/register', ensureNotAuthenticated, async (req, res) => {
-  try {
-      const hashedPassword = await bcrypt.hash(req.body.password, 10);
-      const user = new User({
-          name: req.body.name,
-          email: req.body.email,
-          password: hashedPassword,
-      });
-      await user.save();
-      res.redirect('/login');
-  } catch (error) {
-      console.error(error);
-      res.redirect('/register');
-  }
-});
+// app.post('/register', ensureNotAuthenticated, async (req, res) => {
+//   try {
+//       const hashedPassword = await bcrypt.hash(req.body.password, 10);
+//       const user = new User({
+//           name: req.body.name,
+//           email: req.body.email,
+//           password: hashedPassword,
+//       });
+//       await user.save();
+//       res.redirect('/login');
+//   } catch (error) {
+//       console.error(error);
+//       res.redirect('/register');
+//   }
+// });
 
 // Login route (POST)
 app.post('/login', ensureNotAuthenticated, passport.authenticate('local', {
