@@ -11,7 +11,10 @@
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <link rel="stylesheet" href="https://cdn.datatables.net/2.0.7/css/dataTables.dataTables.css" />
   <link href="https://unpkg.com/filepond@^4/dist/filepond.css" rel="stylesheet" />
+  <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css"
+    rel="stylesheet" />
 
+  <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
   <script src="https://unpkg.com/filepond-plugin-file-encode/dist/filepond-plugin-file-encode.js"></script>
   <script src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
   <script src="https://cdn.datatables.net/2.0.7/js/dataTables.js"></script>
@@ -44,8 +47,8 @@
     });
   });
 
-  document.addEventListener('DOMContentLoaded', ()=> {
-    FilePond.registerPlugin(FilePondPluginFileEncode);
+  document.addEventListener('DOMContentLoaded', () => {
+    FilePond.registerPlugin(FilePondPluginFileEncode, FilePondPluginImagePreview);
     FilePond.parse(document.body)
   })
 
