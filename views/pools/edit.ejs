@@ -1,5 +1,5 @@
 <h2 class="mb text-xl font-bold dark:text-white text-center py-4">Edit customer pool</h2>
-<form action="/pools/<%= pool.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+<form action="/pools/<%= pool.id %>?_method=PUT" method="POST">
   <%- include('_form_fields') %>
   <div class="px-4 mx-auto max-w-2xl py-4">
     <a class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-red-800" href="/pools">Cancel</a>

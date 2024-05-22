@@ -1,24 +1,12 @@
 const express = require('express')
 const router = express.Router();
 const Pool = require('../models/pool')
-const multer = require('multer')
-const path = require('path')
-const fs = require('fs')
-const uploadPath = path.join('public', Pool.coverImageBasePath)
 const imageMimeTypes = ['image/jpeg', 'image/png', 'images/gif']
-const upload = multer({
-  dest: uploadPath,
-  fileFilter: (req, file, callback) => {
-    callback(null, imageMimeTypes.includes(file.mimetype))
-  }
-})
+
 
 // All Pools Route
 router.get('/', ensureAuthenticated, async (req, res) => {
   let query = Pool.find();
-  if (req.query.name != null && req.query.name != '') {
-    query = query.regex('name', new RegExp(req.query.name, 'i'));
-  }
 
   try {
     const pools = await query.exec();
@@ -38,30 +26,26 @@ router.get('/new', ensureAuthenticated, (req, res) => {
 })
 
 // Create Pool Route
-router.post('/', ensureAuthenticated, upload.single('cover'), async (req, res) => {
-  const fileName = req.file != null ? req.file.filename : null
+router.post('/', ensureAuthenticated, async (req, res) => {
   const pool = new Pool({
     name: req.body.name,
     number: req.body.number,
     email: req.body.email,
     bodyOfWater: req.body.bodyOfWater,
     status: req.body.status,
-    coverImageName: fileName,
     description: req.body.description,
     system: req.body.system,
     pump: req.body.pump,
     filter: req.body.filter,
     heater: req.body.heater
-    
   })
+  saveCover(pool, req.body.cover)
 
   try {
     const newPool = await pool.save()
     res.redirect(`pools/${newPool.id}`)
-  } catch {
-    if (pool.coverImageName != null) {
-      removePoolCover(pool.coverImageName)
-    }
+  } catch (err) {
+    console.log(err)
     renderNewPage(res, pool, true)
   }
 })
@@ -87,7 +71,7 @@ router.get('/:id/edit', ensureAuthenticated, async (req, res) => {
   }
 })
 
-router.put('/:id', upload.single('cover'), ensureAuthenticated, async (req, res) => {
+router.put('/:id', ensureAuthenticated, async (req, res) => {
   let pool;
 
   try {
@@ -102,16 +86,14 @@ router.put('/:id', upload.single('cover'), ensureAuthenticated, async (req, res)
     pool.pump = req.body.pump;
     pool.filter = req.body.filter;
     pool.heater = req.body.heater;
-    
-    if (req.file) {
-      const fileName = req.file.filename;
-      if (pool.coverImageName) {
-        removePoolCover(pool.coverImageName); // Remove old cover image
-      }
-      pool.coverImageName = fileName; // Update cover image name
+
+    if (req.body.cover != null && req.body.cover !== '') {
+      saveCover(pool, req.body.cover)
     }
+    
     await pool.save();
     res.redirect(`/pools/${pool.id}`);
+
   } catch (err) {
     console.error(err);
     if (pool != null) {
@@ -124,12 +106,9 @@ router.put('/:id', upload.single('cover'), ensureAuthenticated, async (req, res)
 
 // Delete Pool Page
 router.delete('/:id', ensureAuthenticated, async (req, res) => {
+  let pool
   try {
-    const pool = await Pool.findById(req.params.id);
-
-    if (pool.coverImageName) {
-      removePoolCover(pool.coverImageName);
-    }
+    pool = await Pool.findById(req.params.id);
 
     await pool.deleteOne();
     res.redirect('/pools');
@@ -146,14 +125,8 @@ function ensureAuthenticated(req, res, next) {
   res.redirect('/login');
 }
 
-async function renderNewPage(res, book, hasError = false) {
-  renderFormPage(res, book, 'new', hasError)
-}
-
-function removePoolCover(fileName) {
-  fs.unlink(path.join(uploadPath, fileName), err => {
-    if (err) console.error(err)
-  })
+async function renderNewPage(res, pool, hasError = false) {
+  renderFormPage(res, pool, 'new', hasError)
 }
 
 async function renderEditPage(res, pool, hasError = false) {
@@ -175,6 +148,15 @@ async function renderFormPage(res, pool, form, hasError = false) {
     res.render(`pools/${form}`, params)
   } catch {
     res.redirect('/pools')
+  }
+}
+
+function saveCover(pool, coverEncoded) {
+  if (coverEncoded == null) return
+  const cover = JSON.parse(coverEncoded)
+  if (cover != null && imageMimeTypes.includes(cover.type)) {
+    pool.coverImage = new Buffer.from(cover.data, 'base64')
+    pool.coverImageType = cover.type
   }
 }
 

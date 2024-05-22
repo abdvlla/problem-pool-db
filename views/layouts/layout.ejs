@@ -5,10 +5,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+    integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <link rel="stylesheet" href="https://cdn.datatables.net/2.0.7/css/dataTables.dataTables.css" />
+  <link href="https://unpkg.com/filepond@^4/dist/filepond.css" rel="stylesheet" />
+
+  <script src="https://unpkg.com/filepond-plugin-file-encode/dist/filepond-plugin-file-encode.js"></script>
+  <script src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
   <script src="https://cdn.datatables.net/2.0.7/js/dataTables.js"></script>
+
 
   <link id="main-css" rel="stylesheet" href="/stylesheets/output.css">
   <title>HHL</title>
@@ -18,24 +25,30 @@
 <body>
   <div class="">
     <%- include('../partials/header.ejs') %>
-        <%- include('../partials/errorMessage.ejs') %>
-          <%- body %>
-        </div>
+      <%- include('../partials/errorMessage.ejs') %>
+        <%- body %>
+  </div>
 </body>
 
 
 </html>
 
 <script>
-$(document).ready(function () {
-  $("table").DataTable({
+  $(document).ready(function () {
+    $("table").DataTable({
       order: [0, 'desc']
+    });
+
+    $('.message a').click(function () {
+      $('form').animate({ height: "toggle", opacity: "toggle" }, "slow");
+    });
   });
 
-  $('.message a').click(function(){
-      $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
-  });
-});
+  document.addEventListener('DOMContentLoaded', ()=> {
+    FilePond.registerPlugin(FilePondPluginFileEncode);
+    FilePond.parse(document.body)
+  })
+
 </script>
 
 <%- include('../partials/footer.ejs') %>
