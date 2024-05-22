@@ -56,16 +56,12 @@ router.post('/', ensureAuthenticated, upload.single('cover'), async (req, res) =
   })
 
   try {
-
-    if (req.file) {
-      pool.coverImage.data = fs.readFileSync(req.file.path); // Read image file as Buffer
-      pool.coverImage.contentType = req.file.mimetype; // Store MIME type of the image
-    }
-
     const newPool = await pool.save()
     res.redirect(`pools/${newPool.id}`)
-  } catch (err) {
-    console.error(err)
+  } catch {
+    if (pool.coverImageName != null) {
+      removePoolCover(pool.coverImageName)
+    }
     renderNewPage(res, pool, true)
   }
 })
