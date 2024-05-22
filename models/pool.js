@@ -32,6 +32,7 @@ const poolSchema = new mongoose.Schema({
 
   coverImage: {
     type: Buffer,
+    contentType: String
   },
   coverImageType: {
     type: String,
@@ -70,11 +71,18 @@ const poolSchema = new mongoose.Schema({
 //   }
 // })
 
-poolSchema.virtual('coverImagePath').get(function () {
-  if (this.coverImageName != null) {
-    return path.join('/', coverImageBasePath, this.coverImageName)
+// poolSchema.virtual('coverImagePath').get(function () {
+//   if (this.coverImageName != null) {
+//     return path.join('/', coverImageBasePath, this.coverImageName)
+//   }
+// })
+
+poolSchema.virtual('coverImagePath').get(function() {
+  if (this.coverImage && this.coverImage.contentType) {
+    return `data:${this.coverImage.contentType};base64,${this.coverImage.data.toString('base64')}`;
   }
-})
+});
+
 
 module.exports = mongoose.model('Pool', poolSchema)
 module.exports.coverImageBasePath = coverImageBasePath
