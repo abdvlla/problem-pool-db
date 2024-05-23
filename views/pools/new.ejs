@@ -1,5 +1,5 @@
 <div class=""></div>
-<form action="/pools" method="POST">
+<form id="pool-form" action="/pools" method="POST">
   <h2 class="mb text-xl font-bold dark:text-white text-center py-4">Add a new pool</h2>
   <%- include('_form_fields') %>
     <div class="px-4 mx-auto max-w-2xl py-4">
@@ -10,3 +10,20 @@
       </button>
       </div>
 </form>
+
+<script>
+  document.getElementById('pool-form').addEventListener('submit', function(event) {
+    const nameInputValue = document.getElementById('name').value.trim();
+    
+    if (nameInputValue === '') {
+      event.preventDefault();
+      
+      Swal.fire({
+        title: "Warning",
+        text: "Name field is empty!",
+        icon: "warning",
+        confirmButtonText: "OK"
+      });
+    }
+  });
+</script>

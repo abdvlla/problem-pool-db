@@ -152,12 +152,17 @@ async function renderFormPage(res, pool, form, hasError = false) {
 }
 
 function saveCover(pool, coverEncoded) {
-  if (coverEncoded == null) return
-  const cover = JSON.parse(coverEncoded)
-  if (cover != null && imageMimeTypes.includes(cover.type)) {
-    pool.coverImage = new Buffer.from(cover.data, 'base64')
-    pool.coverImageType = cover.type
+  if (coverEncoded == null) return;
+  try {
+    const cover = JSON.parse(coverEncoded);
+    if (cover != null && imageMimeTypes.includes(cover.type)) {
+      pool.coverImage = Buffer.from(cover.data, 'base64');
+      pool.coverImageType = cover.type;
+    }
+  } catch {
+    console.error("Error parsing cover data, may be due to empty image.");
   }
 }
+
 
 module.exports = router;
