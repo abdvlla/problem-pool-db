@@ -6,6 +6,21 @@
     <table
       class="table-auto border-x border-b w-full border rounded-lg shadow-md"
     >
+      <div class="py-1 bg-gray-50 flex justify-center">
+        <label for="status-filter" class="mr-2">Filter by status:</label>
+        <select class="bg-gray-50 border border-gray-400" id="status-filter">
+          <option value="">All</option>
+          <option value="New BoW">New BoW</option>
+          <option value="Received">Received</option>
+          <option value="Follow-up 1">Follow-up 1</option>
+          <option value="Follow-up 2">Follow-up 2</option>
+          <option value="Ongoing">Ongoing</option>
+          <option value="Improving">Improving</option>
+          <option value="No update">No update</option>
+          <option value="Almost">Almost</option>
+          <option value="Closed">Closed</option>
+        </select>
+      </div>
       <thead class="bg-gray-200 dark:bg-gray-700">
         <tr>
           <th

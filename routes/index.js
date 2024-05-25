@@ -4,7 +4,6 @@ const Pool = require("../models/pool");
 
 router.get("/", ensureAuthenticated, async (req, res) => {
   try {
-    // Fetch necessary data from the database
     const allPools = await Pool.find().exec();
     const allBodiesOfWater = allPools.length;
     const newBoWCount = allPools.filter(
@@ -34,7 +33,6 @@ router.get("/", ensureAuthenticated, async (req, res) => {
     const noUpdateCount = allPools.filter(
       (pool) => pool.status === "No update"
     ).length;
-    // Add more counts as needed for other statuses
 
     res.render("index", {
       allBodiesOfWater,

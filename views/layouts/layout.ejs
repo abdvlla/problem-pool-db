@@ -25,6 +25,7 @@
     />
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://unpkg.com/filepond-plugin-image-exif-orientation/dist/filepond-plugin-image-exif-orientation.js"></script>
     <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
     <script src="https://unpkg.com/filepond-plugin-file-encode/dist/filepond-plugin-file-encode.js"></script>
     <script src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
@@ -45,18 +46,21 @@
 <script>
   $(document).ready(function () {
     $("table").DataTable({
-      order: [0, "desc"],
+      order: [4, "asc"],
     });
 
-    $(".message a").click(function () {
-      $("form").animate({ height: "toggle", opacity: "toggle" }, "slow");
+    $("#status-filter").change(function () {
+      var selectedStatus = $(this).val();
+
+      $("table").DataTable().column(4).search(selectedStatus).draw();
     });
   });
 
   document.addEventListener("DOMContentLoaded", () => {
     FilePond.registerPlugin(
       FilePondPluginFileEncode,
-      FilePondPluginImagePreview
+      FilePondPluginImagePreview,
+      FilePondPluginImageExifOrientation
     );
     FilePond.parse(document.body);
   });
