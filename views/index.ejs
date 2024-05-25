@@ -1,1 +1,210 @@
-<h1 class=" text-5xl text-center">Home Page</h1>
+<section class="py-12 bg-gray-900 text-gray-100 sm:py-12 lg:py-16">
+  <div class="px-4 mx-auto max-w-4xl sm:px-6 lg:px-8">
+    <div class="max-w-xl mx-auto text-center xl:max-w-2xl">
+      <h2
+        class="text-3xl font-bold leading-tight text-gray-50 sm:text-4xl xl:text-5xl mb-6"
+      >
+        Customer status statistics
+      </h2>
+    </div>
+    <div class="relative mt-2">
+      <div class="absolute -inset-1"></div>
+      <div
+        class="relative overflow-hidden bg-white shadow-md rounded-xl h-full"
+      >
+        <div class="p-9">
+          <h3 class="w-12 h-9 mx-auto text-gray-900 text-4xl font-bold sm:mx-0">
+            <%= allBodiesOfWater %>
+          </h3>
+          <h3 class="mt-6 text-2xl font-bold text-gray-900 sm:mt-10">
+            All bodies of water
+          </h3>
+          <p class="mt-6 text-base text-gray-600">
+            The total number of bodies of waters in the database
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      class="grid max-w-4xl lg:max-w-6xl grid-cols-1 mx-auto mt-8 text-center gap-y-4 sm:gap-x-8 sm:grid-cols-2 lg:grid-cols-3 sm:mt-12 lg:mt-20 sm:text-left"
+    >
+      <div class="relative">
+        <div class="absolute -inset-1"></div>
+        <div
+          class="relative overflow-hidden bg-white shadow-md rounded-xl h-full"
+        >
+          <div class="p-9">
+            <h3
+              class="w-12 h-9 mx-auto text-gray-900 text-4xl font-bold sm:mx-0"
+            >
+              <%= newBoWCount %>
+            </h3>
+            <h3 class="mt-6 text-2xl font-bold text-gray-900 sm:mt-10">
+              New BoW
+            </h3>
+            <p class="mt-6 text-base text-gray-600">
+              These are the bodies of water that have been recently added.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="relative">
+        <div class="absolute -inset-1"></div>
+        <div
+          class="relative overflow-hidden bg-white shadow-md rounded-xl h-full"
+        >
+          <div class="p-9">
+            <h3
+              class="w-12 h-12 mx-auto text-gray-900 text-4xl font-bold sm:mx-0"
+            >
+              <%= receivedCount %>
+            </h3>
+            <h3 class="mt-6 text-2xl font-bold text-gray-900 sm:mt-10">
+              Received
+            </h3>
+            <p class="mt-6 text-base text-gray-600">
+              These are the bodies of water that have been received
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="relative">
+        <div class="absolute -inset-1"></div>
+        <div
+          class="relative overflow-hidden bg-white shadow-md rounded-xl h-full"
+        >
+          <div class="p-9">
+            <h3
+              class="w-12 h-12 mx-auto text-gray-900 text-4xl font-bold sm:mx-0"
+            >
+              <%= ongoingCount %>
+            </h3>
+            <h3 class="mt-6 text-2xl font-bold text-gray-900 sm:mt-10">
+              Ongoing
+            </h3>
+            <p class="mt-6 text-base text-gray-600">
+              These are the bodies of water that are currenly being investigated
+              and worked on
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="overflow-hidden bg-white shadow-md rounded-xl">
+        <div class="p-9">
+          <h3
+            class="w-12 h-12 mx-auto text-gray-900 text-4xl font-bold sm:mx-0"
+          >
+            <%= improvingCount %>
+          </h3>
+          <h3 class="mt-6 text-2xl font-bold text-gray-900 sm:mt-10">
+            Improving
+          </h3>
+          <p class="mt-6 text-base text-gray-600">
+            Bodies of water that are finding progress and getting clearer
+          </p>
+        </div>
+      </div>
+      <div class="relative">
+        <div class="absolute -inset-1"></div>
+        <div
+          class="relative overflow-hidden bg-white shadow-md rounded-xl h-full"
+        >
+          <div class="p-9">
+            <h3
+              class="w-12 h-12 mx-auto text-gray-900 text-4xl font-bold sm:mx-0"
+            >
+              <%= almostCount %>
+            </h3>
+            <h3 class="mt-6 text-2xl font-bold text-gray-900 sm:mt-10">
+              Almost
+            </h3>
+            <p class="mt-6 text-base text-gray-600">
+              These are the bodies of water that are on the verge of clearing up
+              but need a little more time
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="relative">
+        <div class="absolute -inset-1"></div>
+        <div
+          class="relative overflow-hidden bg-white shadow-md rounded-xl h-full"
+        >
+          <div class="p-9">
+            <h3
+              class="w-12 h-12 mx-auto text-gray-900 text-4xl font-bold sm:mx-0"
+            >
+              <%= closedCount %>
+            </h3>
+            <h3 class="mt-6 text-2xl font-bold text-gray-900 sm:mt-10">
+              Closed
+            </h3>
+            <p class="mt-6 text-base text-gray-600">
+              These are the bodies of water that have a closed status
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="relative">
+        <div class="absolute -inset-1"></div>
+        <div
+          class="relative overflow-hidden bg-white shadow-md rounded-xl h-full"
+        >
+          <div class="p-9">
+            <h3
+              class="w-12 h-12 mx-auto text-gray-900 text-4xl font-bold sm:mx-0"
+            >
+              <%= followUp1Count %>
+            </h3>
+            <h3 class="mt-6 text-2xl font-bold text-gray-900 sm:mt-10">
+              Follow-up 1
+            </h3>
+            <p class="mt-6 text-base text-gray-600">
+              Customers that have been contacted regarding their body of water
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="relative">
+        <div class="absolute -inset-1"></div>
+        <div
+          class="relative overflow-hidden bg-white shadow-md rounded-xl h-full"
+        >
+          <div class="p-9">
+            <h3
+              class="w-12 h-12 mx-auto text-gray-900 text-4xl font-bold sm:mx-0"
+            >
+              <%= followUp2Count %>
+            </h3>
+            <h3 class="mt-6 text-2xl font-bold text-gray-900 sm:mt-10">
+              Closed
+            </h3>
+            <p class="mt-6 text-base text-gray-600">
+              Bodies of waters that have been cleared up
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="relative">
+        <div class="absolute -inset-1"></div>
+        <div
+          class="relative overflow-hidden bg-white shadow-md rounded-xl h-full"
+        >
+          <div class="p-9">
+            <h3
+              class="w-12 h-12 mx-auto text-gray-900 text-4xl font-bold sm:mx-0"
+            >
+              <%= noUpdateCount %>
+            </h3>
+            <h3 class="mt-6 text-2xl font-bold text-gray-900 sm:mt-10">
+              No update
+            </h3>
+            <p class="mt-6 text-base text-gray-600">
+              Customers who have been contacted twice and have not responded
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
