@@ -1,8 +1,11 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
 const poolSchema = new mongoose.Schema({
+  firstName: {
+    type: String,
+  },
 
-  name: {
+  lastName: {
     type: String,
   },
 
@@ -35,7 +38,7 @@ const poolSchema = new mongoose.Schema({
 
   createdAt: {
     type: Date,
-    default: Date.now
+    default: Date.now,
   },
 
   system: {
@@ -54,12 +57,33 @@ const poolSchema = new mongoose.Schema({
     type: String,
   },
 
-})
+  size: {
+    type: String,
+  },
 
-poolSchema.virtual('coverImagePath').get(function() {
+  otherEquipment: {
+    type: String,
+  },
+
+  hhlBuild: {
+    type: String,
+  },
+
+  brand: {
+    type: String,
+  },
+
+  make: {
+    type: String,
+  },
+});
+
+poolSchema.virtual("coverImagePath").get(function () {
   if (this.coverImage != null && this.coverImageType != null) {
-    return `data:${this.coverImageType};charset=utf-8;base64,${this.coverImage.toString('base64')}`
+    return `data:${
+      this.coverImageType
+    };charset=utf-8;base64,${this.coverImage.toString("base64")}`;
   }
-})
+});
 
-module.exports = mongoose.model('Pool', poolSchema)
+module.exports = mongoose.model("Pool", poolSchema);

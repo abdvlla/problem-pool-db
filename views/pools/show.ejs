@@ -1,53 +1,141 @@
 <div class="content-center py-4 px-4 mx-auto max-w-4xl">
   <div class="px-4 sm:px-0">
-    <h3 class="text-base font-semibold leading-7 text-gray-900 text-center">Pool Information</h3>
+    <h2 class="leading-7 text-gray-900 text-center mb text-xl font-bold">
+      Customer BoW Information
+    </h2>
   </div>
   <div class="mt-6 border-t border-gray-200">
     <dl class="divide-y divide-gray-250">
       <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-        <dt class="text-sm font-medium leading-6 text-gray-900">Customer name</dt>
-        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><%= pool.name %></dd>
+        <dt class="text-sm font-medium leading-6 text-gray-900">
+          Customer name
+        </dt>
+        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+          <%= pool.firstName + " " + pool.lastName %>
+        </dd>
       </div>
       <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
         <dt class="text-sm font-medium leading-6 text-gray-900">E-mail</dt>
-        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><%= pool.email %></dd>
+        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+          <%= pool.email %>
+        </dd>
       </div>
       <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-        <dt class="text-sm font-medium leading-6 text-gray-900">Phone number</dt>
-        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><%= pool.number %></dd>
+        <dt class="text-sm font-medium leading-6 text-gray-900">
+          Phone number
+        </dt>
+        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+          <%= pool.number %>
+        </dd>
       </div>
       <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-        <dt class="text-sm font-medium leading-6 text-gray-900">Current Status</dt>
-        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0 font-semibold underline"><%= pool.status %></dd>
+        <dt class="text-sm font-medium leading-6 text-gray-900">
+          Current status
+        </dt>
+        <dd
+          class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0 font-semibold underline"
+        >
+          <%= pool.status %>
+        </dd>
+      </div>
+      <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+        <dt class="text-sm font-medium leading-6 text-gray-900">
+          Body of water
+        </dt>
+        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+          <%= pool.bodyOfWater %>
+        </dd>
+      </div>
+      <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+        <dt class="text-sm font-medium leading-6 text-gray-900">
+          Installed by HHL
+        </dt>
+        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+          <%= pool.hhlBuild %>
+        </dd>
+      </div>
+      <div id="size" class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+        <dt class="text-sm font-medium leading-6 text-gray-900">Pool size</dt>
+        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+          <%= pool.size %>
+        </dd>
+      </div>
+      <div id="brand" class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+        <dt class="text-sm font-medium leading-6 text-gray-900">Brand</dt>
+        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+          <%= pool.brand %>
+        </dd>
+      </div>
+      <div id="make" class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+        <dt class="text-sm font-medium leading-6 text-gray-900">Make</dt>
+        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+          <%= pool.make %>
+        </dd>
       </div>
       <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
         <dt class="text-sm font-medium leading-6 text-gray-900">System</dt>
-        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><%= pool.system %></dd>
+        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+          <%= pool.system %>
+        </dd>
       </div>
-      <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+      <div id="pump" class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
         <dt class="text-sm font-medium leading-6 text-gray-900">Pump</dt>
-        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><%= pool.pump %></dd>
+        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+          <%= pool.pump %>
+        </dd>
       </div>
-      <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+      <div
+        id="filter"
+        class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0"
+      >
         <dt class="text-sm font-medium leading-6 text-gray-900">Filter</dt>
-        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><%= pool.filter %></dd>
+        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+          <%= pool.filter %>
+        </dd>
+      </div>
+      <div
+        id="heater"
+        class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0"
+      >
+        <dt class="text-sm font-medium leading-6 text-gray-900">Heater</dt>
+        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+          <%= pool.heater %>
+        </dd>
       </div>
       <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-        <dt class="text-sm font-medium leading-6 text-gray-900">Heater</dt>
-        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><%= pool.heater %></dd>
+        <dt class="text-sm font-medium leading-6 text-gray-900">
+          Other equipment
+        </dt>
+        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+          <%= pool.otherEquipment %>
+        </dd>
       </div>
       <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
         <dt class="text-sm font-medium leading-6 text-gray-900">Description</dt>
-        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0" style="white-space: pre-line;"><%= pool.description %></dd>
+        <dd
+          class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"
+          style="white-space: pre-line"
+        >
+          <%= pool.description %>
+        </dd>
       </div>
       <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
         <dt class="text-sm font-medium leading-6 text-gray-900">Image</dt>
         <dd class="mt-2 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-          <ul role="list" class="divide-y divide-gray-100 rounded-md border border-gray-200">
-            <li class="flex items-center justify-between py-4 pl-4 pr-5 text-sm leading-6">
+          <ul
+            role="list"
+            class="divide-y divide-gray-100 rounded-md border border-gray-200"
+          >
+            <li
+              class="flex items-center justify-between py-4 pl-4 pr-5 text-sm leading-6"
+            >
               <div class="flex w-0 flex-1 items-center">
                 <div class="ml-2 flex min-w-0 flex-1 gap-2">
-                  <img class="" style="margin-top: 10px; margin-bottom: 10px;" src="<%= pool.coverImagePath %>">
+                  <img
+                    class=""
+                    style="margin-top: 10px; margin-bottom: 10px"
+                    src="<%= pool.coverImagePath %>"
+                  />
                 </div>
               </div>
             </li>
@@ -56,8 +144,54 @@
       </div>
     </dl>
     <div class="py-4 flex space-x-2">
-      <a class="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" href="/pools/<%= pool.id %>/edit">Edit</a>
+      <a
+        class="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+        href="/pools/<%= pool.id %>/edit"
+        >Edit</a
+      >
       <%- include('../partials/deleteForm', { url: `/pools/${pool.id}` }) %>
     </div>
   </div>
 </div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const bodyOfWaterValue = "<%= pool.bodyOfWater %>";
+    const brandField = document.querySelector("#brand");
+    const makeField = document.querySelector("#make");
+    const pumpField = document.querySelector("#pump");
+    const filterField = document.querySelector("#filter");
+    const heaterField = document.querySelector("#heater");
+    const sizeField = document.querySelector("#size");
+
+    function toggleFieldsVisibility() {
+      brandField.classList.add("hiddenFields");
+      makeField.classList.add("hiddenFields");
+      pumpField.classList.add("hiddenFields");
+      filterField.classList.add("hiddenFields");
+      heaterField.classList.add("hiddenFields");
+      sizeField.classList.add("hiddenFields");
+
+      if (bodyOfWaterValue === "HT" || bodyOfWaterValue === "SS") {
+        brandField.classList.remove("hiddenFields");
+        makeField.classList.remove("hiddenFields");
+      } else if (
+        bodyOfWaterValue === "IG" ||
+        bodyOfWaterValue === "OG" ||
+        bodyOfWaterValue === "AG"
+      ) {
+        pumpField.classList.remove("hiddenFields");
+        filterField.classList.remove("hiddenFields");
+        heaterField.classList.remove("hiddenFields");
+        sizeField.classList.remove("hiddenFields");
+      }
+    }
+    toggleFieldsVisibility();
+  });
+</script>
+
+<style>
+  .hiddenFields {
+    display: none;
+  }
+</style>

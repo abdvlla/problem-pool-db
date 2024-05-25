@@ -1,27 +1,65 @@
-<h1 class="text-center text-xl py-4 font-bold">All customer pools</h1>
-<div class="content-center py-4 px-4 mx-auto max-w-screen-xl relative overflow-x-auto shadow-md sm:rounded-lg">
+<h1 class="text-center text-xl py-4 font-bold">All customer bodies of water</h1>
+<div
+  class="content-center py-4 px-4 mx-auto max-w-screen-xl relative overflow-x-auto shadow-md sm:rounded-lg"
+>
   <form action="pools" method="GET">
     <table class="table-auto border-x border-b w-full">
       <thead class="bg-gray-200 dark:bg-gray-700">
         <tr>
-          <th class="px-6 py-3 text-left font-semibold text-gray-800 dark:text-white">Customer name</th>
-          <th class="px-6 py-3 text-left font-semibold text-gray-800 dark:text-white">Email</th>
-          <th class="px-6 py-3 text-left font-semibold text-gray-800 dark:text-white">Phone</th>
-          <th class="px-6 py-3 text-left font-semibold text-gray-800 dark:text-white">Pool status</th>
-          <th class="px-6 py-3 text-left font-semibold text-gray-800 dark:text-white">Action</th>
+          <th
+            class="px-6 py-3 text-left font-semibold text-gray-800 dark:text-white"
+          >
+            First name
+          </th>
+          <th
+            class="px-6 py-3 text-left font-semibold text-gray-800 dark:text-white"
+          >
+            Last name
+          </th>
+          <th
+            class="px-6 py-3 text-left font-semibold text-gray-800 dark:text-white"
+          >
+            Email
+          </th>
+          <th
+            class="px-6 py-3 text-left font-semibold text-gray-800 dark:text-white"
+          >
+            Phone
+          </th>
+          <th
+            class="px-6 py-3 text-left font-semibold text-gray-800 dark:text-white"
+          >
+            Pool status
+          </th>
+          <th
+            class="px-6 py-3 text-left font-semibold text-gray-800 dark:text-white"
+          >
+            Action
+          </th>
         </tr>
       </thead>
       <tbody>
         <% pools.forEach((pool, index) => { %>
-          <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 ">
-            <td class="px-6 py-4 text-gray-900 dark:text-white"><%= pool.name %></td>
-            <td class="px-6 py-4"><%= pool.email %></td>
-            <td class="px-6 py-4"><%= pool.number %></td>
-            <td class="px-6 py-4"><%= pool.status %></td>
-            <td class="px-6 py-4">
-              <a href="/pools/<%= pool.id %>" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">View</a>
-            </td>
-          </tr>
+        <tr
+          class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600"
+        >
+          <td class="px-6 py-4 text-gray-900 dark:text-white">
+            <%= pool.firstName %>
+          </td>
+          <td class="px-6 py-4 text-gray-900 dark:text-white">
+            <%= pool.lastName %>
+          </td>
+          <td class="px-6 py-4"><%= pool.email %></td>
+          <td class="px-6 py-4"><%= pool.number %></td>
+          <td class="px-6 py-4"><%= pool.status %></td>
+          <td class="px-6 py-4">
+            <a
+              href="/pools/<%= pool.id %>"
+              class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+              >View</a
+            >
+          </td>
+        </tr>
         <% }) %>
       </tbody>
     </table>
