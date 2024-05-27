@@ -95,9 +95,11 @@ router.put("/:id", ensureAuthenticated, async (req, res) => {
     pool.brand = req.body.brand;
     pool.make = req.body.make;
 
-    if (req.body.cover != null && req.body.cover !== "") {
-      saveCover(pool, req.body.cover);
-    }
+    saveCover(pool, req.body.cover, req.body.removeCover);
+
+    // if (req.body.cover != null && req.body.cover !== "") {
+    //   saveCover(pool, req.body.cover);
+    // }
 
     await pool.save();
     res.redirect(`/pools/${pool.id}`);
@@ -158,7 +160,12 @@ async function renderFormPage(res, pool, form, hasError = false) {
   }
 }
 
-function saveCover(pool, coverEncoded) {
+function saveCover(pool, coverEncoded, removeCover) {
+  if (removeCover) {
+    pool.coverImage = undefined;
+    pool.coverImageType = undefined;
+    return;
+  }
   if (coverEncoded == null) return;
   try {
     const cover = JSON.parse(coverEncoded);
