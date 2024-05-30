@@ -166,7 +166,9 @@ function saveCover(pool, coverEncoded, removeCover) {
     pool.coverImageType = undefined;
     return;
   }
-  if (coverEncoded == null) return;
+
+  if (!coverEncoded) return;
+
   try {
     const cover = JSON.parse(coverEncoded);
     if (cover != null && imageMimeTypes.includes(cover.type)) {
@@ -174,7 +176,7 @@ function saveCover(pool, coverEncoded, removeCover) {
       pool.coverImageType = cover.type;
     }
   } catch {
-    console.error("Error parsing cover data, may be due to empty image.");
+    console.error("Error parsing cover data");
   }
 }
 
