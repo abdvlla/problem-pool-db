@@ -19,24 +19,4 @@
   </div>
 </form>
 
-<script>
-  document
-    .getElementById("pool-form")
-    .addEventListener("submit", function (event) {
-      const nameInputValue = document.getElementById("lastName").value.trim();
-
-      if (nameInputValue === "") {
-        event.preventDefault();
-
-        Swal.fire({
-          title: "Warning",
-          text: "Last name field is empty!",
-          icon: "warning",
-          confirmButtonText: "OK",
-        });
-      }
-    });
-
-  const removeCover = document.getElementById("coverCheckbox");
-  removeCover.style.display = "none";
-</script>
+<script defer src="/javascripts/swalNew.js"></script>

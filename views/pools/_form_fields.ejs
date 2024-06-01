@@ -129,54 +129,25 @@
             <div class="sm:col-span-2">
                 <label for="description" name="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
                 <textarea id="description" name="description" rows="8"
-                    class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Details about the pool"><%=pool.description %></textarea>
+                    class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Details about the body of water"><%=pool.description %></textarea>
             </div>
             <div class="sm:col-span-2">
                 <label for="cover" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Image</label>
                 <input type="file" name="cover" class="filepond" multiple>
-                <div id="coverCheckbox">
-                    <img class="" src="<%= pool.coverImagePath %>" alt="">
-                <input type="checkbox" name="removeCover" id="removeCover">
-                <label for="removeCover">Remove Image</label>
-            </div>
-            </div>
+                <div id="existingImages">
+                  <% if (pool.coverImagePath && pool.coverImagePath.length > 0) { %>
+                    <% pool.coverImagePath.forEach(function(imagePath, index) { %>
+                      <div class="existing-image">
+                        <img src="<%= imagePath %>" alt="Existing Image" style="max-width: 300px; margin: 10px;">
+                        <label for="removeImage<%= index %>">Remove</label>
+                        <input type="checkbox" name="removeImages[]" value="<%= index %>" id="removeImage<%= index %>">
+                      </div>
+                    <% }); %>
+                  <% } %>
+                </div>
+              </div>
         </div>
     </div>
 </section>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-    const bodyOfWaterSelect = document.getElementById('bodyOfWater');
-    const brandField = document.getElementById('brand');
-    const makeField = document.getElementById('make');
-    const pumpField = document.getElementById('pump');
-    const filterField = document.getElementById('filter');
-    const heaterField = document.getElementById('heater');
-    const sizeField = document.getElementById('size');
-
-    function toggleFieldsVisibility() {
-        const selectedOption = bodyOfWaterSelect.value;
-        
-        brandField.style.display = 'none';
-        makeField.style.display = 'none';
-        pumpField.style.display = 'none';
-        filterField.style.display = 'none';
-        heaterField.style.display = 'none';
-        sizeField.style.display = 'none';
-
-        if (selectedOption === 'HT' || selectedOption === 'SS') {
-            brandField.style.display = 'block';
-            makeField.style.display = 'block';
-        } else if (selectedOption === 'IG' || selectedOption === 'AG' || selectedOption === 'OG' || selectedOption === 'Other') {
-            pumpField.style.display = 'block';
-            filterField.style.display = 'block';
-            heaterField.style.display = 'block';
-            sizeField.style.display = 'block';
-        }
-    }
-
-    bodyOfWaterSelect.addEventListener('change', toggleFieldsVisibility);
-    toggleFieldsVisibility();
-});
-
-</script>
+<script defer src="/javascripts/hideFields.js"></script>
