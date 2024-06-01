@@ -134,7 +134,7 @@
             <div class="sm:col-span-2">
                 <label for="cover" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Image</label>
                 <input type="file" name="cover" class="filepond" multiple>
-                <div id="existingImages">
+                <div id="existingImages" class="grid grid-cols-2">
                   <% if (pool.coverImagePath && pool.coverImagePath.length > 0) { %>
                     <% pool.coverImagePath.forEach(function(imagePath, index) { %>
                       <div class="existing-image">
