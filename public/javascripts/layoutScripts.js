@@ -1,12 +1,15 @@
 $(document).ready(function () {
-  $("table").DataTable({
-    order: [4, "asc"],
-  });
-
-  $("#status-filter").change(function () {
-    var selectedStatus = $(this).val();
-
-    $("table").DataTable().column(4).search(selectedStatus).draw();
+  $("#poolTable").DataTable({
+    pagingType: "simple_numbers",
+    language: {
+      searchPlaceholder: "Search records",
+    },
+    initComplete: function () {
+      var api = this.api();
+      $("#status-filter").on("change", function () {
+        api.column(4).search(this.value).draw();
+      });
+    },
   });
 });
 
