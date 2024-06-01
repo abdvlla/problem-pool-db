@@ -6,12 +6,9 @@ const imageMimeTypes = ["image/jpeg", "image/png", "images/gif"];
 // All Pools Route
 router.get("/", ensureAuthenticated, async (req, res) => {
   let query = Pool.find();
-
   try {
     const pools = await query.exec();
-    res.render("pools/index", {
-      pools: pools,
-    });
+    res.render("pools/index", { pools: pools });
   } catch (err) {
     console.error(err);
     res.redirect("/");
@@ -42,7 +39,8 @@ router.post("/", ensureAuthenticated, async (req, res) => {
     brand: req.body.brand,
     make: req.body.make,
   });
-  saveCover(pool, req.body.cover);
+
+  saveImages(pool, req.body.cover);
 
   try {
     const newPool = await pool.save();
@@ -75,7 +73,6 @@ router.get("/:id/edit", ensureAuthenticated, async (req, res) => {
 
 router.put("/:id", ensureAuthenticated, async (req, res) => {
   let pool;
-
   try {
     pool = await Pool.findById(req.params.id);
     pool.firstName = req.body.firstName;
@@ -95,11 +92,7 @@ router.put("/:id", ensureAuthenticated, async (req, res) => {
     pool.brand = req.body.brand;
     pool.make = req.body.make;
 
-    saveCover(pool, req.body.cover, req.body.removeCover);
-
-    // if (req.body.cover != null && req.body.cover !== "") {
-    //   saveCover(pool, req.body.cover);
-    // }
+    saveImages(pool, req.body.cover, req.body.removeCover);
 
     await pool.save();
     res.redirect(`/pools/${pool.id}`);
@@ -118,7 +111,6 @@ router.delete("/:id", ensureAuthenticated, async (req, res) => {
   let pool;
   try {
     pool = await Pool.findById(req.params.id);
-
     await pool.deleteOne();
     res.redirect("/pools");
   } catch (err) {
@@ -144,15 +136,10 @@ async function renderEditPage(res, pool, hasError = false) {
 
 async function renderFormPage(res, pool, form, hasError = false) {
   try {
-    const params = {
-      pool: pool,
-    };
+    const params = { pool: pool };
     if (hasError) {
-      if (form === "edit") {
-        params.errorMessage = "Error Updating Pool";
-      } else {
-        params.errorMessage = "Error Creating Pool";
-      }
+      params.errorMessage =
+        form === "edit" ? "Error Updating Pool" : "Error Creating Pool";
     }
     res.render(`pools/${form}`, params);
   } catch {
@@ -160,23 +147,32 @@ async function renderFormPage(res, pool, form, hasError = false) {
   }
 }
 
-function saveCover(pool, coverEncoded, removeCover) {
+function saveImages(pool, coversEncoded, removeCover) {
   if (removeCover) {
-    pool.coverImage = undefined;
-    pool.coverImageType = undefined;
+    pool.images = [];
     return;
   }
 
-  if (!coverEncoded) return;
+  if (!coversEncoded) return;
 
   try {
-    const cover = JSON.parse(coverEncoded);
-    if (cover != null && imageMimeTypes.includes(cover.type)) {
-      pool.coverImage = Buffer.from(cover.data, "base64");
-      pool.coverImageType = cover.type;
-    }
-  } catch {
-    console.error("Error parsing cover data");
+    const covers = Array.isArray(coversEncoded)
+      ? coversEncoded
+      : [coversEncoded];
+
+    pool.images = covers
+      .map((coverEncoded) => {
+        const cover = JSON.parse(coverEncoded);
+        if (cover != null && imageMimeTypes.includes(cover.type)) {
+          return {
+            image: Buffer.from(cover.data, "base64"),
+            imageType: cover.type,
+          };
+        }
+      })
+      .filter(Boolean);
+  } catch (err) {
+    console.error("Error parsing cover data", err);
   }
 }
 

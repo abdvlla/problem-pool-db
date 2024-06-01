@@ -120,12 +120,14 @@
         </dd>
       </div>
       <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-        <dt class="text-sm font-medium leading-6 text-gray-900">Image</dt>
+        <dt class="text-sm font-medium leading-6 text-gray-900">Images</dt>
         <dd class="mt-2 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
           <ul
             role="list"
             class="divide-y divide-gray-100 rounded-md border border-gray-200"
           >
+            <% if (pool.coverImagePath && pool.coverImagePath.length > 0) { %>
+            <% pool.coverImagePath.forEach(function(imagePath) { %>
             <li
               class="flex items-center justify-between py-4 pl-4 pr-5 text-sm leading-6"
             >
@@ -134,11 +136,22 @@
                   <img
                     class=""
                     style="margin-top: 10px; margin-bottom: 10px"
-                    src="<%= pool.coverImagePath %>"
+                    src="<%= imagePath %>"
                   />
                 </div>
               </div>
             </li>
+            <% }); %> <% } else { %>
+            <li
+              class="flex items-center justify-between py-4 pl-4 pr-5 text-sm leading-6"
+            >
+              <div class="flex w-0 flex-1 items-center">
+                <div class="ml-2 flex min-w-0 flex-1 gap-2">
+                  No images available
+                </div>
+              </div>
+            </li>
+            <% } %>
           </ul>
         </dd>
       </div>

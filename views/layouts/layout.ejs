@@ -66,7 +66,11 @@
           FilePondPluginImageResize,
           FilePondPluginImageTransform
         );
-        FilePond.parse(document.body);
+
+        FilePond.create(document.querySelector(".filepond"), {
+          allowMultiple: true,
+          name: "cover",
+        });
       });
     </script>
   </body>

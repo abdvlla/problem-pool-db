@@ -29,12 +29,12 @@ const poolSchema = new mongoose.Schema({
     type: String,
   },
 
-  coverImage: {
-    type: Buffer,
-  },
-  coverImageType: {
-    type: String,
-  },
+  images: [
+    {
+      image: Buffer,
+      imageType: String,
+    },
+  ],
 
   createdAt: {
     type: Date,
@@ -79,11 +79,15 @@ const poolSchema = new mongoose.Schema({
 });
 
 poolSchema.virtual("coverImagePath").get(function () {
-  if (this.coverImage != null && this.coverImageType != null) {
-    return `data:${
-      this.coverImageType
-    };charset=utf-8;base64,${this.coverImage.toString("base64")}`;
+  if (this.images != null && this.images.length > 0) {
+    return this.images.map(
+      (img) =>
+        `data:${img.imageType};charset=utf-8;base64,${img.image.toString(
+          "base64"
+        )}`
+    );
   }
+  return [];
 });
 
 module.exports = mongoose.model("Pool", poolSchema);
