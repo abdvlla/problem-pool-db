@@ -5,16 +5,16 @@
   <div class="py-1 flex justify-center">
     <label for="status-filter" class="mr-2">Filter by status:</label>
     <select class="bg-gray-50 border border-gray-400" id="status-filter">
-      <option value="">All</option>
-      <option value="New BoW">New BoW</option>
-      <option value="Received">Received</option>
-      <option value="Follow-up 1">Follow-up 1</option>
-      <option value="Follow-up 2">Follow-up 2</option>
-      <option value="Ongoing">Ongoing</option>
-      <option value="Improving">Improving</option>
-      <option value="No update">No update</option>
-      <option value="Almost">Almost</option>
-      <option value="Closed">Closed</option>
+      <option value="" <%= statusFilter === '' ? 'selected' : '' %>>All</option>
+      <option value="New BoW" <%= statusFilter === 'New BoW' ? 'selected' : '' %>>New BoW</option>
+      <option value="Received" <%= statusFilter === 'Received' ? 'selected' : '' %>>Received</option>
+      <option value="Follow-up 1" <%= statusFilter === 'Follow-up 1' ? 'selected' : '' %>>Follow-up 1</option>
+      <option value="Follow-up 2" <%= statusFilter === 'Follow-up 2' ? 'selected' : '' %>>Follow-up 2</option>
+      <option value="Ongoing" <%= statusFilter === 'Ongoing' ? 'selected' : '' %>>Ongoing</option>
+      <option value="Improving" <%= statusFilter === 'Improving' ? 'selected' : '' %>>Improving</option>
+      <option value="No update" <%= statusFilter === 'No update' ? 'selected' : '' %>>No update</option>
+      <option value="Almost" <%= statusFilter === 'Almost' ? 'selected' : '' %>>Almost</option>
+      <option value="Closed" <%= statusFilter === 'Closed' ? 'selected' : '' %>>Closed</option>
     </select>
   </div>
   <form action="pools" method="GET">

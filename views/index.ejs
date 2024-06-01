@@ -4,34 +4,36 @@
       <h2
         class="text-3xl font-bold leading-tight text-gray-50 sm:text-4xl xl:text-5xl mb-6"
       >
-        Customer status statistics
+        Customer Status Statistics
       </h2>
     </div>
     <div class="relative mt-2">
-      <div class="absolute -inset-1"></div>
-      <div
-        class="relative overflow-hidden bg-white shadow-md rounded-xl h-full"
-      >
-        <div class="p-9">
-          <h3 class="w-12 h-9 mx-auto text-gray-900 text-4xl font-bold sm:mx-0">
-            <%= allBodiesOfWater %>
-          </h3>
-          <h3 class="mt-6 text-2xl font-bold text-gray-900 sm:mt-10">
-            All bodies of water
-          </h3>
-          <p class="mt-6 text-base text-gray-600">
-            The total number of bodies of waters in the database
-          </p>
+      <a href="/pools">
+        <div
+          class="relative overflow-hidden bg-white shadow-md rounded-xl h-full hover:bg-gray-100 transition duration-300"
+        >
+          <div class="p-9">
+            <h3
+              class="w-12 h-9 mx-auto text-gray-900 text-4xl font-bold sm:mx-0"
+            >
+              <%= allBodiesOfWater %>
+            </h3>
+            <h3 class="mt-6 text-2xl font-bold text-gray-900 sm:mt-10">
+              All Bodies of Water
+            </h3>
+            <p class="mt-6 text-base text-gray-600">
+              The total number of bodies of waters in the database
+            </p>
+          </div>
         </div>
-      </div>
+      </a>
     </div>
     <div
       class="grid max-w-4xl lg:max-w-6xl grid-cols-1 mx-auto mt-8 text-center gap-y-4 sm:gap-x-8 sm:grid-cols-2 lg:grid-cols-3 sm:mt-12 lg:mt-20 sm:text-left"
     >
-      <div class="relative">
-        <div class="absolute -inset-1"></div>
+      <a href="/pools?status=New%20BoW" class="relative">
         <div
-          class="relative overflow-hidden bg-white shadow-md rounded-xl h-full"
+          class="relative overflow-hidden bg-white shadow-md rounded-xl h-full hover:bg-gray-100 transition duration-300"
         >
           <div class="p-9">
             <h3
@@ -47,11 +49,10 @@
             </p>
           </div>
         </div>
-      </div>
-      <div class="relative">
-        <div class="absolute -inset-1"></div>
+      </a>
+      <a href="/pools?status=Received" class="relative">
         <div
-          class="relative overflow-hidden bg-white shadow-md rounded-xl h-full"
+          class="relative overflow-hidden bg-white shadow-md rounded-xl h-full hover:bg-gray-100 transition duration-300"
         >
           <div class="p-9">
             <h3
@@ -63,15 +64,14 @@
               Received
             </h3>
             <p class="mt-6 text-base text-gray-600">
-              These are the bodies of water that have been received
+              These are the bodies of water that have been received.
             </p>
           </div>
         </div>
-      </div>
-      <div class="relative">
-        <div class="absolute -inset-1"></div>
+      </a>
+      <a href="/pools?status=Ongoing" class="relative">
         <div
-          class="relative overflow-hidden bg-white shadow-md rounded-xl h-full"
+          class="relative overflow-hidden bg-white shadow-md rounded-xl h-full hover:bg-gray-100 transition duration-300"
         >
           <div class="p-9">
             <h3
@@ -83,31 +83,34 @@
               Ongoing
             </h3>
             <p class="mt-6 text-base text-gray-600">
-              These are the bodies of water that are currenly being investigated
-              and worked on
+              These are the bodies of water that are currently being
+              investigated and worked on.
             </p>
           </div>
         </div>
-      </div>
-      <div class="overflow-hidden bg-white shadow-md rounded-xl">
-        <div class="p-9">
-          <h3
-            class="w-12 h-12 mx-auto text-gray-900 text-4xl font-bold sm:mx-0"
-          >
-            <%= improvingCount %>
-          </h3>
-          <h3 class="mt-6 text-2xl font-bold text-gray-900 sm:mt-10">
-            Improving
-          </h3>
-          <p class="mt-6 text-base text-gray-600">
-            Bodies of water that are finding progress and getting clearer
-          </p>
-        </div>
-      </div>
-      <div class="relative">
-        <div class="absolute -inset-1"></div>
+      </a>
+      <a href="/pools?status=Improving" class="relative">
         <div
-          class="relative overflow-hidden bg-white shadow-md rounded-xl h-full"
+          class="relative overflow-hidden bg-white shadow-md rounded-xl h-full hover:bg-gray-100 transition duration-300"
+        >
+          <div class="p-9">
+            <h3
+              class="w-12 h-12 mx-auto text-gray-900 text-4xl font-bold sm:mx-0"
+            >
+              <%= improvingCount %>
+            </h3>
+            <h3 class="mt-6 text-2xl font-bold text-gray-900 sm:mt-10">
+              Improving
+            </h3>
+            <p class="mt-6 text-base text-gray-600">
+              Bodies of water that are finding progress and getting clearer.
+            </p>
+          </div>
+        </div>
+      </a>
+      <a href="/pools?status=Almost" class="relative">
+        <div
+          class="relative overflow-hidden bg-white shadow-md rounded-xl h-full hover:bg-gray-100 transition duration-300"
         >
           <div class="p-9">
             <h3
@@ -120,15 +123,14 @@
             </h3>
             <p class="mt-6 text-base text-gray-600">
               These are the bodies of water that are on the verge of clearing up
-              but need a little more time
+              but need a little more time.
             </p>
           </div>
         </div>
-      </div>
-      <div class="relative">
-        <div class="absolute -inset-1"></div>
+      </a>
+      <a href="/pools?status=Closed" class="relative">
         <div
-          class="relative overflow-hidden bg-white shadow-md rounded-xl h-full"
+          class="relative overflow-hidden bg-white shadow-md rounded-xl h-full hover:bg-gray-100 transition duration-300"
         >
           <div class="p-9">
             <h3
@@ -140,15 +142,14 @@
               Closed
             </h3>
             <p class="mt-6 text-base text-gray-600">
-              These are the bodies of water that have a closed status
+              These are the bodies of water that have a closed status.
             </p>
           </div>
         </div>
-      </div>
-      <div class="relative">
-        <div class="absolute -inset-1"></div>
+      </a>
+      <a href="/pools?status=Follow-up%201" class="relative">
         <div
-          class="relative overflow-hidden bg-white shadow-md rounded-xl h-full"
+          class="relative overflow-hidden bg-white shadow-md rounded-xl h-full hover:bg-gray-100 transition duration-300"
         >
           <div class="p-9">
             <h3
@@ -160,15 +161,14 @@
               Follow-up 1
             </h3>
             <p class="mt-6 text-base text-gray-600">
-              Customers that have been contacted regarding their body of water
+              Customers that have been contacted regarding their body of water.
             </p>
           </div>
         </div>
-      </div>
-      <div class="relative">
-        <div class="absolute -inset-1"></div>
+      </a>
+      <a href="/pools?status=Follow-up%202" class="relative">
         <div
-          class="relative overflow-hidden bg-white shadow-md rounded-xl h-full"
+          class="relative overflow-hidden bg-white shadow-md rounded-xl h-full hover:bg-gray-100 transition duration-300"
         >
           <div class="p-9">
             <h3
@@ -177,18 +177,18 @@
               <%= followUp2Count %>
             </h3>
             <h3 class="mt-6 text-2xl font-bold text-gray-900 sm:mt-10">
-              Closed
+              Follow-up 2
             </h3>
             <p class="mt-6 text-base text-gray-600">
-              Bodies of waters that have been cleared up
+              Customers that have been contacted a second time, following the
+              first time.
             </p>
           </div>
         </div>
-      </div>
-      <div class="relative">
-        <div class="absolute -inset-1"></div>
+      </a>
+      <a href="/pools?status=No%20update" class="relative">
         <div
-          class="relative overflow-hidden bg-white shadow-md rounded-xl h-full"
+          class="relative overflow-hidden bg-white shadow-md rounded-xl h-full hover:bg-gray-100 transition duration-300"
         >
           <div class="p-9">
             <h3
@@ -197,14 +197,14 @@
               <%= noUpdateCount %>
             </h3>
             <h3 class="mt-6 text-2xl font-bold text-gray-900 sm:mt-10">
-              No update
+              No Update
             </h3>
             <p class="mt-6 text-base text-gray-600">
-              Customers who have been contacted twice and have not responded
+              Customers who have been contacted twice and have not responded.
             </p>
           </div>
         </div>
-      </div>
+      </a>
     </div>
   </div>
 </section>

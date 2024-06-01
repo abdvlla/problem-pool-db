@@ -7,9 +7,18 @@ const { ensureAuthenticated } = require("../public/javascripts/authentication");
 // All Pools Route
 router.get("/", ensureAuthenticated, async (req, res) => {
   let query = Pool.find();
+  const statusFilter = req.query.status || "";
+
+  if (statusFilter) {
+    query = query.where({ status: statusFilter });
+  }
+
   try {
     const pools = await query.exec();
-    res.render("pools/index", { pools: pools });
+    res.render("pools/index", {
+      pools: pools,
+      statusFilter: statusFilter,
+    });
   } catch (err) {
     console.error(err);
     res.redirect("/");
