@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Pool = require("../models/pool");
 const imageMimeTypes = ["image/jpeg", "image/png", "images/gif"];
+const { ensureAuthenticated } = require("../public/javascripts/authentication");
 
 // All Pools Route
 router.get("/", ensureAuthenticated, async (req, res) => {
@@ -177,13 +178,6 @@ router.delete("/:id", ensureAuthenticated, async (req, res) => {
     res.redirect("/");
   }
 });
-
-function ensureAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) {
-    return next();
-  }
-  res.redirect("/login");
-}
 
 async function renderNewPage(res, pool, hasError = false) {
   renderFormPage(res, pool, "new", hasError);

@@ -10,8 +10,10 @@ const passport = require("passport");
 const session = require("express-session");
 const methodOverride = require("method-override");
 const expressLayouts = require("express-ejs-layouts");
-const User = require("./models/user");
 const flash = require("express-flash");
+
+const User = require("./models/user");
+const authenticationMethods = require("./public/javascripts/authentication");
 
 // Import initializePassport function
 const initializePassport = require("./routes/passport-setup");
@@ -57,17 +59,17 @@ initializePassport(
 );
 
 // Login route
-app.get("/login", ensureNotAuthenticated, (req, res) => {
+app.get("/login", authenticationMethods.ensureNotAuthenticated, (req, res) => {
   res.render("authentication/login.ejs", { title: "Login" });
 });
 
 // Register route
-// app.get('/register', ensureNotAuthenticated, (req, res) => {
+// app.get('/register', authenticationMethods.ensureNotAuthenticated, (req, res) => {
 //   res.render('authentication/register.ejs', { title: 'Register' });
 // });
 
 // Registration form submission
-// app.post('/register', ensureNotAuthenticated, async (req, res) => {
+// app.post('/register', authenticationMethods.ensureNotAuthenticated,, async (req, res) => {
 //   try {
 //       const hashedPassword = await bcrypt.hash(req.body.password, 10);
 //       const user = new User({
@@ -86,7 +88,7 @@ app.get("/login", ensureNotAuthenticated, (req, res) => {
 // Login route (POST)
 app.post(
   "/login",
-  ensureNotAuthenticated,
+  authenticationMethods.ensureNotAuthenticated,
   passport.authenticate("local", {
     successRedirect: "/",
     failureRedirect: "/login",
@@ -108,15 +110,9 @@ app.delete("/logout", (req, res) => {
 // Routers uses
 app.use("/", indexRouter);
 app.use("/pools", poolRouter);
-
-// Functions to ensure authentication
-
-function ensureNotAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) {
-    return res.redirect("/");
-  }
-  next();
-}
+app.get("*", authenticationMethods.ensureAuthenticated, (req, res) => {
+  res.redirect("/");
+});
 
 // Error handling middleware
 app.use((err, req, res, next) => {
