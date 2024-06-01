@@ -92,7 +92,8 @@ router.put("/:id", ensureAuthenticated, async (req, res) => {
     pool.brand = req.body.brand;
     pool.make = req.body.make;
 
-    saveImages(pool, req.body.cover, req.body.removeCover);
+    // Append new images to existing ones
+    appendImages(pool, req.body.cover);
 
     await pool.save();
     res.redirect(`/pools/${pool.id}`);
@@ -105,6 +106,32 @@ router.put("/:id", ensureAuthenticated, async (req, res) => {
     }
   }
 });
+
+function appendImages(pool, coversEncoded) {
+  if (!coversEncoded) return;
+
+  try {
+    const covers = Array.isArray(coversEncoded)
+      ? coversEncoded
+      : [coversEncoded];
+
+    const newImages = covers
+      .map((coverEncoded) => {
+        const cover = JSON.parse(coverEncoded);
+        if (cover != null && imageMimeTypes.includes(cover.type)) {
+          return {
+            image: Buffer.from(cover.data, "base64"),
+            imageType: cover.type,
+          };
+        }
+      })
+      .filter(Boolean);
+
+    pool.images = pool.images.concat(newImages);
+  } catch (err) {
+    console.error("Error parsing cover data", err);
+  }
+}
 
 // Delete Pool Page
 router.delete("/:id", ensureAuthenticated, async (req, res) => {
@@ -160,7 +187,7 @@ function saveImages(pool, coversEncoded, removeCover) {
       ? coversEncoded
       : [coversEncoded];
 
-    pool.images = covers
+    const newImages = covers
       .map((coverEncoded) => {
         const cover = JSON.parse(coverEncoded);
         if (cover != null && imageMimeTypes.includes(cover.type)) {
@@ -171,6 +198,8 @@ function saveImages(pool, coversEncoded, removeCover) {
         }
       })
       .filter(Boolean);
+
+    pool.images = pool.images.concat(newImages);
   } catch (err) {
     console.error("Error parsing cover data", err);
   }
