@@ -54,14 +54,14 @@
       <tr
         class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600"
       >
-        <td class="py-4 text-gray-900 dark:text-white">
+        <td class="py-4 text-gray-900 dark:text-white select-all">
           <%= pool.firstName %>
         </td>
-        <td class="py-4 text-gray-900 dark:text-white font-bold"><%= pool.lastName %></td>
+        <td class="py-4 text-gray-900 dark:text-white font-bold select-all"><%= pool.lastName %></td>
         <td class="py-4 text-blue-600 underline">
           <a href="mailto:<%= pool.email %>"><%= pool.email %></a>
         </td>
-        <td class="py-4"><%= pool.number %></td>
+        <td class="py-4 select-all"><%= pool.number %></td>
         <td class="py-4"><%= pool.status %></td>
 
         <td class="py-4">
