@@ -4,8 +4,14 @@
 >
   <div class="py-1 flex justify-center">
     <label for="status-filter" class="mr-2">Filter by status:</label>
-    <select class="bg-gray-50 border border-gray-400" id="status-filter">
-      <option value="" <%= statusFilter === '' ? 'selected' : '' %>>All</option>
+    <form id="filter-form" action="/pools" method="GET">
+      <select
+        class="bg-gray-50 border border-gray-400"
+        id="status-filter"
+        name="status"
+        onchange="document.getElementById('filter-form').submit();"
+      >
+      <option value="" <%= statusFilter === '' ? 'selected' : '' %> >All</option>
       <option value="New BoW" <%= statusFilter === 'New BoW' ? 'selected' : '' %>>New BoW</option>
       <option value="Received" <%= statusFilter === 'Received' ? 'selected' : '' %>>Received</option>
       <option value="Follow-up 1" <%= statusFilter === 'Follow-up 1' ? 'selected' : '' %>>Follow-up 1</option>
@@ -14,72 +20,60 @@
       <option value="Improving" <%= statusFilter === 'Improving' ? 'selected' : '' %>>Improving</option>
       <option value="No update" <%= statusFilter === 'No update' ? 'selected' : '' %>>No update</option>
       <option value="Almost" <%= statusFilter === 'Almost' ? 'selected' : '' %>>Almost</option>
-      <option value="Closed" <%= statusFilter === 'Closed' ? 'selected' : '' %>>Closed</option>
-    </select>
+      <option value="Closed" <%= statusFilter === 'Closed' ? 'selected' : '' %>>Closed</option></select>
+    </form>
   </div>
-  <form action="pools" method="GET">
-    <table
-      id="poolTable"
-      class="table-auto border-x border-b w-full border rounded-lg shadow-md"
-    >
-      <thead class="bg-gray-200 dark:bg-gray-700">
-        <tr>
-          <th
-            class="px-6 py-3 text-left font-semibold text-gray-800 dark:text-white"
-          >
-            First name
-          </th>
-          <th
-            class="px-6 py-3 text-left font-semibold text-gray-800 dark:text-white"
-          >
-            Last name
-          </th>
-          <th
-            class="px-6 py-3 text-left font-semibold text-gray-800 dark:text-white"
-          >
-            Email
-          </th>
-          <th
-            class="px-6 py-3 text-left font-semibold text-gray-800 dark:text-white"
-          >
-            Phone
-          </th>
-          <th
-            class="px-6 py-3 text-left font-semibold text-gray-800 dark:text-white"
-          >
-            Pool status
-          </th>
-          <th
-            class="px-6 py-3 text-left font-semibold text-gray-800 dark:text-white"
-          >
-            Action
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <% pools.forEach((pool, index) => { %>
-        <tr
-          class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600"
-        >
-          <td class="px-6 py-4 text-gray-900 dark:text-white">
-            <%= pool.firstName %>
-          </td>
-          <td class="px-6 py-4 text-gray-900 dark:text-white">
-            <%= pool.lastName %>
-          </td>
-          <td class="px-6 py-4 text-blue-600 underline"><a href="mailto:<%= pool.email %>"><%= pool.email %></a></td>
-          <td class="px-6 py-4"><%= pool.number %></td>
-          <td class="px-6 py-4"><%= pool.status %></td>
-          <td class="px-6 py-4">
-            <a
+  <table
+    id="poolTable"
+    class="table-auto shadow-lg rounded w-full"
+  >
+    <thead class="bg-gray-200 dark:bg-gray-700">
+      <tr>
+        <th class="py-3 text-left font-semibold text-gray-800 dark:text-white">
+          First name
+        </th>
+        <th class="py-3 text-left font-semibold text-gray-800 dark:text-white">
+          Last name
+        </th>
+        <th class="py-3 text-left font-semibold text-gray-800 dark:text-white">
+          Email
+        </th>
+        <th class="py-3 text-left font-semibold text-gray-800 dark:text-white">
+          Phone
+        </th>
+        <th class="py-3 text-left font-semibold text-gray-800 dark:text-white">
+          Status
+        </th>
+        <th
+          class="py-3 text-right font-semibold text-gray-800 dark:text-white"
+        ></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% pools.forEach((pool, index) => { %>
+      <tr
+        class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600"
+      >
+        <td class="py-4 text-gray-900 dark:text-white">
+          <%= pool.firstName %>
+        </td>
+        <td class="py-4 text-gray-900 dark:text-white font-bold"><%= pool.lastName %></td>
+        <td class="py-4 text-blue-600 underline">
+          <a href="mailto:<%= pool.email %>"><%= pool.email %></a>
+        </td>
+        <td class="py-4"><%= pool.number %></td>
+        <td class="py-4"><%= pool.status %></td>
+
+        <td class="py-4">
+          <a
               href="/pools/<%= pool.id %>"
               class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
               >View</a
             >
-          </td>
-        </tr>
-        <% }) %>
-      </tbody>
-    </table>
-  </form>
+        </td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
 </div>
+

@@ -4,6 +4,7 @@ $(document).ready(function () {
     language: {
       searchPlaceholder: "Search records",
     },
+    columnDefs: [{ searchable: false, orderable: false, targets: [5] }],
     initComplete: function () {
       var api = this.api();
       $("#status-filter").on("change", function () {
