@@ -9,13 +9,14 @@
         <img
           class="h-8 w-auto"
           src="https://poolsuppliesnovascotia.pro/cdn/shop/files/Logo_e26ade37-5699-44c7-831e-4e21036feb4e.jpg?v=1711477056&width=300"
-          alt=""
+          alt="Logo"
         />
       </a>
     </div>
     <div class="flex lg:hidden">
       <button
         type="button"
+        id="menu-button"
         class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
       >
         <span class="sr-only">Open main menu</span>
@@ -52,4 +53,32 @@
       </form>
     </div>
   </nav>
+  <div id="mobile-menu" class="hidden lg:hidden">
+    <a
+      href="/pools"
+      class="block px-4 py-2 text-sm font-semibold leading-6 text-gray-900"
+      >All BoW</a
+    >
+    <a
+      href="/pools/new"
+      class="block px-4 py-2 text-sm font-semibold leading-6 text-gray-900"
+      >New BoW</a
+    >
+    <form id="logout-form" action="/logout?_method=DELETE" method="POST">
+      <a class="block px-4 py-2 text-sm font-semibold leading-6 text-gray-900"
+        >Log out <span aria-hidden="true">&rarr;</span></a
+      >
+    </form>
+  </div>
 </header>
+
+<script>
+  document.getElementById("menu-button").addEventListener("click", function () {
+    const menu = document.getElementById("mobile-menu");
+    if (menu.classList.contains("hidden")) {
+      menu.classList.remove("hidden");
+    } else {
+      menu.classList.add("hidden");
+    }
+  });
+</script>

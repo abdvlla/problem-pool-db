@@ -21,11 +21,13 @@ document.addEventListener("DOMContentLoaded", () => {
     FilePondPluginImageExifOrientation,
     FilePondPluginImageCrop,
     FilePondPluginImageResize,
-    FilePondPluginImageTransform
+    FilePondPluginImageTransform,
+    FilePondPluginImageEdit
   );
 
   FilePond.create(document.querySelector(".filepond"), {
     allowMultiple: true,
+    allowImageEdit: true,
     name: "cover",
   });
 });
