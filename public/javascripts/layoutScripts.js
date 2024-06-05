@@ -1,5 +1,6 @@
 $(document).ready(function () {
   var table = $("#poolTable").DataTable({
+    lengthMenu: [10, 25, 50, 100],
     pagingType: "simple_numbers",
     language: {
       searchPlaceholder: "Search records",
@@ -7,12 +8,6 @@ $(document).ready(function () {
     columnDefs: [{ searchable: false, orderable: false, targets: [6] }],
     initComplete: function () {
       var api = this.api();
-
-      $("#poolTable_length").appendTo("#entries-per-page");
-
-      $(".dataTables_filter").appendTo("#search-bar");
-
-      $("#filter-form").appendTo("#datatable-controls");
 
       $("#status-filter").on("change", function () {
         api.column(4).search(this.value).draw();
@@ -22,6 +17,13 @@ $(document).ready(function () {
         api.column(3).search(this.value).draw();
       });
     },
+  });
+  $("#custom-search").on("keyup", function () {
+    table.search(this.value).draw();
+  });
+
+  $("#page-length").on("change", function () {
+    table.page.len(this.value).draw();
   });
 });
 
