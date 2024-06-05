@@ -8,9 +8,14 @@ const { ensureAuthenticated } = require("../public/javascripts/authentication");
 router.get("/", ensureAuthenticated, async (req, res) => {
   let query = Pool.find();
   const statusFilter = req.query.status || "";
+  const assignedFilter = req.query.assignedTo || "";
 
   if (statusFilter) {
     query = query.where({ status: statusFilter });
+  }
+
+  if (assignedFilter) {
+    query = query.where({ assignedTo: assignedFilter });
   }
 
   try {
@@ -18,6 +23,7 @@ router.get("/", ensureAuthenticated, async (req, res) => {
     res.render("pools/index", {
       pools: pools,
       statusFilter: statusFilter,
+      assignedFilter: assignedFilter,
     });
   } catch (err) {
     console.error(err);
@@ -48,6 +54,7 @@ router.post("/", ensureAuthenticated, async (req, res) => {
     otherEquipment: req.body.otherEquipment,
     brand: req.body.brand,
     make: req.body.make,
+    assignedTo: req.body.assignedTo,
   });
 
   saveImages(pool, req.body.cover);
@@ -101,6 +108,7 @@ router.put("/:id", ensureAuthenticated, async (req, res) => {
     pool.hhlBuild = req.body.hhlBuild;
     pool.brand = req.body.brand;
     pool.make = req.body.make;
+    pool.assignedTo = req.body.assignedTo;
 
     if (req.body.removeImages) {
       const removeIndices = req.body.removeImages.map(Number);

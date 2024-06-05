@@ -106,7 +106,7 @@
             </div>
 
 
-            <div class="w-full">
+            <div class="max-w-full">
                 <label for="hhlBuild" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">HHL Build</label>
                 <div class="flex gap-x-3">
                     <div class="flex space-x-0.5">
@@ -124,6 +124,21 @@
                         <label for="hs-radio-group-3" class="text-sm text-gray-500 ms-3">Unknown</label>
                     </div>
                 </div>
+            </div>
+
+            <div class="sm:col-span-2">
+                <label for="assignedTo" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Assigned to</label>
+                <select id="assignedTo" name="assignedTo"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                    <option label="Jenn" value="Jenn" <%= pool.assignedTo==='Jenn' ? 'selected' : '' %>>Jenn</option>
+                    <option label="Colby" value="Colby" <%= pool.assignedTo==='Colby' ? 'selected' : '' %>>Colby</option>
+                    <option label="Jessica" value="Jessica" <%= pool.assignedTo==='Jessica' ? 'selected' : '' %>>Jessica</option>
+                    <option label="Amaya" value="Amaya" <%= pool.assignedTo==='Amaya' ? 'selected' : '' %>>Amaya</option>
+                    <option label="Ben" value="Ben" <%= pool.assignedTo==='Ben' ? 'selected' : '' %>>Ben</option>
+                    <option label="Hannah" value="Hannah" <%= pool.assignedTo==='Hannah' ? 'selected' : '' %>>Hannah</option>
+                    <option label="Jack" value="Jack" <%= pool.assignedTo==='Jack' ? 'selected' : '' %>>Jack</option>
+                    <option label="Jaime" value="Jaime" <%= pool.assignedTo==='Jaime' ? 'selected' : '' %>>Jaime</option>
+                </select>
             </div>
 
             <div class="sm:col-span-2">

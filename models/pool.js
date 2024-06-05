@@ -76,6 +76,10 @@ const poolSchema = new mongoose.Schema({
   make: {
     type: String,
   },
+
+  assignedTo: {
+    type: String,
+  },
 });
 
 poolSchema.virtual("coverImagePath").get(function () {

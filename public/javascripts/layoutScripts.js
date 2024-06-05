@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  $("#poolTable").DataTable({
+  var table = $("#poolTable").DataTable({
     pagingType: "simple_numbers",
     language: {
       searchPlaceholder: "Search records",
@@ -7,8 +7,19 @@ $(document).ready(function () {
     columnDefs: [{ searchable: false, orderable: false, targets: [5] }],
     initComplete: function () {
       var api = this.api();
+
+      $("#poolTable_length").appendTo("#entries-per-page");
+
+      $(".dataTables_filter").appendTo("#search-bar");
+
+      $("#filter-form").appendTo("#datatable-controls");
+
       $("#status-filter").on("change", function () {
         api.column(4).search(this.value).draw();
+      });
+
+      $("#assigned-filter").on("change", function () {
+        api.column(3).search(this.value).draw();
       });
     },
   });
