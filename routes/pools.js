@@ -165,32 +165,6 @@ function appendImages(pool, coversEncoded) {
   }
 }
 
-function appendImages(pool, coversEncoded) {
-  if (!coversEncoded) return;
-
-  try {
-    const covers = Array.isArray(coversEncoded)
-      ? coversEncoded
-      : [coversEncoded];
-
-    const newImages = covers
-      .map((coverEncoded) => {
-        const cover = JSON.parse(coverEncoded);
-        if (cover != null && imageMimeTypes.includes(cover.type)) {
-          return {
-            image: Buffer.from(cover.data, "base64"),
-            imageType: cover.type,
-          };
-        }
-      })
-      .filter(Boolean);
-
-    pool.images = pool.images.concat(newImages);
-  } catch (err) {
-    console.error("Error parsing cover data", err);
-  }
-}
-
 // Delete Pool Page
 router.delete("/:id", ensureAuthenticated, async (req, res) => {
   let pool;
