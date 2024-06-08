@@ -24,6 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
       selectedOption === "IG" ||
       selectedOption === "AG" ||
       selectedOption === "OG" ||
+      selectedOption === "Pool (Unknown type)" ||
       selectedOption === "Other"
     ) {
       pumpField.style.display = "block";

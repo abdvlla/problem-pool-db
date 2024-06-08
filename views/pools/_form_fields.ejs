@@ -33,6 +33,7 @@
                     Water</label>
                 <select id="bodyOfWater" name="bodyOfWater"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                    <option label="Pool (Unknown type)" value="Pool (Unknown type)" <%= pool.bodyOfWater==='Pool (Unknown type)' ? 'selected' : '' %>>Pool (Unknown type)</option>
                     <option label="IG" value="IG" <%= pool.bodyOfWater==='IG' ? 'selected' : '' %>>IG</option>
                     <option label="AG" value="AG" <%= pool.bodyOfWater==='AG' ? 'selected' : '' %>>AG</option>
                     <option label="OG" value="OG" <%= pool.bodyOfWater==='OG' ? 'selected' : '' %>>OG</option>

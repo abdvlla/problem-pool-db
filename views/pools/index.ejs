@@ -53,7 +53,7 @@
         <div class="justify-end">
           <label class="block text-sm font-medium leading-6 text-gray-900 px-2">Search records</label>
           <div class="relative mt-1">
-              <input type="text" id="custom-search" class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" placeholder="Search...">
+              <input type="text" id="custom-search" class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="Search...">
               <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
                   <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 1 0-4 4m0 0a7 7 0 0 0 4-4z"></path>
@@ -83,7 +83,7 @@
                 <td class="py-4 select-all"><%= pool.number %></td>
                 <td class="py-4"><%= pool.status %></td>
                 <td class="py-4"><%= pool.assignedTo %></td>
-                <td class="py-4"><a href="/pools/<%= pool.id %>" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">View</a></td>
+                <td class="py-4"><a href="/pools/<%= pool.id %>" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">View</a>/<a href="/pools/<%= pool.id %>/edit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a></td>
             </tr>
             <% }) %>
         </tbody>

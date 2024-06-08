@@ -1,137 +1,98 @@
 <div class="content-center py-4 px-4 mx-auto max-w-4xl">
   <div class="px-4 sm:px-0">
-    <h2 class="leading-7 text-gray-900 text-center mb text-xl font-bold">
+    <h2 class="leading-7 text-gray-900 text-center mb-4 text-2xl font-bold">
       Customer BoW Information
     </h2>
   </div>
   <div class="mt-6 border-t border-gray-200">
-    <dl class="divide-y divide-gray-250">
-      <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-        <dt class="text-sm font-medium leading-6 text-gray-900">
-          Customer name
-        </dt>
-        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-          <%= pool.firstName + " " + pool.lastName %>
-        </dd>
+    <dl class="divide-y divide-gray-200">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 py-3">
+        <div>
+          <dt class="text-sm font-medium text-gray-900">Customer name</dt>
+          <dd class="mt-1 text-sm text-gray-700">
+            <%= pool.firstName + " " + pool.lastName %>
+          </dd>
+        </div>
+        <div>
+          <dt class="text-sm font-medium text-gray-900">E-mail</dt>
+          <dd class="mt-1 text-sm text-blue-600 underline">
+            <a href="mailto:<%= pool.email %>"><%= pool.email %></a>
+          </dd>
+        </div>
+        <div>
+          <dt class="text-sm font-medium text-gray-900">Phone number</dt>
+          <dd class="mt-1 text-sm text-gray-700"><%= pool.number %></dd>
+        </div>
       </div>
-      <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-        <dt class="text-sm font-medium leading-6 text-gray-900">E-mail</dt>
-        <dd
-          class="mt-1 text-sm leading-6 sm:col-span-2 sm:mt-0 text-blue-600 underline"
-        >
-          <a href="mailto:<%= pool.email %>"> <%= pool.email %> </a>
-        </dd>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 py-3">
+        <div>
+          <dt class="text-sm font-medium text-gray-900">Current status</dt>
+          <dd class="mt-1 text-sm text-gray-700 font-semibold underline">
+            <%= pool.status %>
+          </dd>
+        </div>
+        <div>
+          <dt class="text-sm font-medium text-gray-900">Assigned to</dt>
+          <dd class="mt-1 text-sm text-gray-700 font-semibold underline">
+            <%= pool.assignedTo %>
+          </dd>
+        </div>
+        <div>
+          <dt class="text-sm font-medium text-gray-900">Body of water</dt>
+          <dd class="mt-1 text-sm text-gray-700"><%= pool.bodyOfWater %></dd>
+        </div>
       </div>
-      <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-        <dt class="text-sm font-medium leading-6 text-gray-900">
-          Phone number
-        </dt>
-        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-          <%= pool.number %>
-        </dd>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 py-3">
+        <div>
+          <dt class="text-sm font-medium text-gray-900">Installed by HHL</dt>
+          <dd class="mt-1 text-sm text-gray-700"><%= pool.hhlBuild %></dd>
+        </div>
+        <div id="size">
+          <dt class="text-sm font-medium text-gray-900">Pool size</dt>
+          <dd class="mt-1 text-sm text-gray-700"><%= pool.size %></dd>
+        </div>
+        <div id="brand">
+          <dt class="text-sm font-medium text-gray-900">Brand</dt>
+          <dd class="mt-1 text-sm text-gray-700"><%= pool.brand %></dd>
+        </div>
+        <div id="make">
+          <dt class="text-sm font-medium text-gray-900">Make</dt>
+          <dd class="mt-1 text-sm text-gray-700"><%= pool.make %></dd>
+        </div>
+        <div id="filter">
+          <dt class="text-sm font-medium text-gray-900">Filter</dt>
+          <dd class="mt-1 text-sm text-gray-700"><%= pool.filter %></dd>
+        </div>
       </div>
-      <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-        <dt class="text-sm font-medium leading-6 text-gray-900">
-          Current status
-        </dt>
-        <dd
-          class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0 font-semibold underline"
-        >
-          <%= pool.status %>
-        </dd>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 py-3">
+        <div>
+          <dt class="text-sm font-medium text-gray-900">System</dt>
+          <dd class="mt-1 text-sm text-gray-700"><%= pool.system %></dd>
+        </div>
+        <div id="pump">
+          <dt class="text-sm font-medium text-gray-900">Pump</dt>
+          <dd class="mt-1 text-sm text-gray-700"><%= pool.pump %></dd>
+        </div>
+        <div id="heater">
+          <dt class="text-sm font-medium text-gray-900">Heater</dt>
+          <dd class="mt-1 text-sm text-gray-700"><%= pool.heater %></dd>
+        </div>
       </div>
-      <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-        <dt class="text-sm font-medium leading-6 text-gray-900">Assigned to</dt>
-        <dd
-          class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0 font-semibold underline"
-        >
-          <%= pool.assignedTo%>
-        </dd>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 py-3">
+        <div>
+          <dt class="text-sm font-medium text-gray-900">Other equipment</dt>
+          <dd class="mt-1 text-sm text-gray-700"><%= pool.otherEquipment %></dd>
+        </div>
+        <div>
+          <dt class="text-sm font-medium text-gray-900">Description</dt>
+          <dd class="mt-1 text-sm text-gray-700" style="white-space: pre-line">
+            <%= pool.description %>
+          </dd>
+        </div>
       </div>
-      <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-        <dt class="text-sm font-medium leading-6 text-gray-900">
-          Body of water
-        </dt>
-        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-          <%= pool.bodyOfWater %>
-        </dd>
-      </div>
-      <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-        <dt class="text-sm font-medium leading-6 text-gray-900">
-          Installed by HHL
-        </dt>
-        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-          <%= pool.hhlBuild %>
-        </dd>
-      </div>
-      <div id="size" class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-        <dt class="text-sm font-medium leading-6 text-gray-900">Pool size</dt>
-        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-          <%= pool.size %>
-        </dd>
-      </div>
-      <div id="brand" class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-        <dt class="text-sm font-medium leading-6 text-gray-900">Brand</dt>
-        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-          <%= pool.brand %>
-        </dd>
-      </div>
-      <div id="make" class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-        <dt class="text-sm font-medium leading-6 text-gray-900">Make</dt>
-        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-          <%= pool.make %>
-        </dd>
-      </div>
-      <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-        <dt class="text-sm font-medium leading-6 text-gray-900">System</dt>
-        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-          <%= pool.system %>
-        </dd>
-      </div>
-      <div id="pump" class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-        <dt class="text-sm font-medium leading-6 text-gray-900">Pump</dt>
-        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-          <%= pool.pump %>
-        </dd>
-      </div>
-      <div
-        id="filter"
-        class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0"
-      >
-        <dt class="text-sm font-medium leading-6 text-gray-900">Filter</dt>
-        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-          <%= pool.filter %>
-        </dd>
-      </div>
-      <div
-        id="heater"
-        class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0"
-      >
-        <dt class="text-sm font-medium leading-6 text-gray-900">Heater</dt>
-        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-          <%= pool.heater %>
-        </dd>
-      </div>
-      <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-        <dt class="text-sm font-medium leading-6 text-gray-900">
-          Other equipment
-        </dt>
-        <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-          <%= pool.otherEquipment %>
-        </dd>
-      </div>
-      <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-        <dt class="text-sm font-medium leading-6 text-gray-900">Description</dt>
-        <dd
-          class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"
-          style="white-space: pre-line"
-        >
-          <%= pool.description %>
-        </dd>
-      </div>
-      <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-        <dt class="text-sm font-medium leading-6 text-gray-900">Images</dt>
-        <dd class="mt-2 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+      <div class="py-3">
+        <dt class="text-sm font-medium text-gray-900">Images</dt>
+        <dd class="mt-2 text-sm text-gray-900">
           <%- include('../partials/existingImages.ejs') %>
         </dd>
       </div>
@@ -150,33 +111,30 @@
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const bodyOfWaterValue = "<%= pool.bodyOfWater %>";
-    const brandField = document.querySelector("#brand");
-    const makeField = document.querySelector("#make");
-    const pumpField = document.querySelector("#pump");
-    const filterField = document.querySelector("#filter");
-    const heaterField = document.querySelector("#heater");
-    const sizeField = document.querySelector("#size");
+    const fieldsToHide = [
+      "#brand",
+      "#make",
+      "#pump",
+      "#filter",
+      "#heater",
+      "#size",
+    ];
 
     function toggleFieldsVisibility() {
-      brandField.classList.add("hiddenFields");
-      makeField.classList.add("hiddenFields");
-      pumpField.classList.add("hiddenFields");
-      filterField.classList.add("hiddenFields");
-      heaterField.classList.add("hiddenFields");
-      sizeField.classList.add("hiddenFields");
+      fieldsToHide.forEach((id) =>
+        document.querySelector(id).classList.add("hiddenFields")
+      );
 
-      if (bodyOfWaterValue === "HT" || bodyOfWaterValue === "SS") {
-        brandField.classList.remove("hiddenFields");
-        makeField.classList.remove("hiddenFields");
+      if (["HT", "SS"].includes(bodyOfWaterValue)) {
+        ["#brand", "#make"].forEach((id) =>
+          document.querySelector(id).classList.remove("hiddenFields")
+        );
       } else if (
-        bodyOfWaterValue === "IG" ||
-        bodyOfWaterValue === "OG" ||
-        bodyOfWaterValue === "AG"
+        ["IG", "OG", "AG", "Pool (Unknown type)"].includes(bodyOfWaterValue)
       ) {
-        pumpField.classList.remove("hiddenFields");
-        filterField.classList.remove("hiddenFields");
-        heaterField.classList.remove("hiddenFields");
-        sizeField.classList.remove("hiddenFields");
+        ["#pump", "#filter", "#heater", "#size"].forEach((id) =>
+          document.querySelector(id).classList.remove("hiddenFields")
+        );
       }
     }
     toggleFieldsVisibility();
