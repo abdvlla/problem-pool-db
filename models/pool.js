@@ -17,6 +17,14 @@ const poolSchema = new mongoose.Schema({
     type: String,
   },
 
+  altNumber: {
+    type: String,
+  },
+
+  altEmail: {
+    type: String,
+  },
+
   bodyOfWater: {
     type: String,
   },
@@ -78,6 +86,13 @@ const poolSchema = new mongoose.Schema({
   },
 
   assignedTo: {
+    type: String,
+  },
+
+  conditionHt: {
+    type: String,
+  },
+  conditionPool: {
     type: String,
   },
 });

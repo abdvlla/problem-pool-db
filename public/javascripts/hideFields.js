@@ -6,6 +6,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const filterField = document.getElementById("filter");
   const heaterField = document.getElementById("heater");
   const sizeField = document.getElementById("size");
+  const conditionPool = document.getElementById("conditionPool");
+  const conditionHt = document.getElementById("conditionHt");
 
   function toggleFieldsVisibility() {
     const selectedOption = bodyOfWaterSelect.value;
@@ -16,10 +18,13 @@ document.addEventListener("DOMContentLoaded", function () {
     filterField.style.display = "none";
     heaterField.style.display = "none";
     sizeField.style.display = "none";
+    conditionPool.style.display = "none";
+    conditionHt.style.display = "none";
 
     if (selectedOption === "HT" || selectedOption === "SS") {
       brandField.style.display = "block";
       makeField.style.display = "block";
+      conditionHt.style.display = "block";
     } else if (
       selectedOption === "IG" ||
       selectedOption === "AG" ||
@@ -31,6 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
       filterField.style.display = "block";
       heaterField.style.display = "block";
       sizeField.style.display = "block";
+      conditionPool.style.display = "block";
     }
   }
 

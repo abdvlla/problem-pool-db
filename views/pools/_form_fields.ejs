@@ -1,14 +1,14 @@
 <section class="dark:bg-gray-900">
     <div class="px-4 mx-auto max-w-2xl lg:py-8 rounded overflow-hidden shadow-lg">
         <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
-            <div class="sm:col-span-2">
+            <div class="max-w-full">
                 <label for="firstName" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Customer
                     first name</label>
                 <input type="text" value="<%= pool.firstName %>" name="firstName" id="firstName"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                     placeholder="First name">
             </div>
-            <div class="sm:col-span-2">
+            <div class="max-w-full">
                 <label for="lastName" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Customer
                     last name</label>
                 <input type="text" value="<%= pool.lastName %>" name="lastName" id="lastName"
@@ -27,6 +27,19 @@
                 <input type="text" name="number" id="number"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                     placeholder="(902) XXX-XXXX" value="<%= pool.number %>">
+            </div>
+            <div class="w-full">
+                <label for="altEmail" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Alternative email</label>
+                <input type="email" name="altEmail" id="altEmail"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                    placeholder="Email" value="<%= pool.altEmail %>">
+            </div>
+            <div class="w-full">
+                <label for="altNumber" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Alternative phone
+                    #</label>
+                <input type="text" name="altNumber" id="altNumber"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                    placeholder="(902) XXX-XXXX" value="<%= pool.altNumber %>">
             </div>
             <div>
                 <label for="bodyOfWater" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Body of
@@ -108,6 +121,52 @@
 
 
             <div class="max-w-full">
+                <label for="assignedTo" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Assigned to</label>
+                <select id="assignedTo" name="assignedTo"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                    <option label="Colby" value="Colby" <%= pool.assignedTo==='Colby' ? 'selected' : '' %>>Colby</option>
+                    <option label="Jenn" value="Jenn" <%= pool.assignedTo==='Jenn' ? 'selected' : '' %>>Jenn</option>
+                    <option label="Jessica" value="Jessica" <%= pool.assignedTo==='Jessica' ? 'selected' : '' %>>Jessica</option>
+                    <option label="Amaya" value="Amaya" <%= pool.assignedTo==='Amaya' ? 'selected' : '' %>>Amaya</option>
+                    <option label="Ben" value="Ben" <%= pool.assignedTo==='Ben' ? 'selected' : '' %>>Ben</option>
+                    <option label="Hannah" value="Hannah" <%= pool.assignedTo==='Hannah' ? 'selected' : '' %>>Hannah</option>
+                    <option label="Jack" value="Jack" <%= pool.assignedTo==='Jack' ? 'selected' : '' %>>Jack</option>
+                    <option label="Jaime" value="Jaime" <%= pool.assignedTo==='Jaime' ? 'selected' : '' %>>Jaime</option>
+                </select>
+            </div>
+            <div class="max-w-full" id="conditionPool">
+                <label for="conditionPool" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Condition</label>
+                <select name="conditionPool" id="conditionPool"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                    <option label="" value="" <%= pool.conditionPool==='' ? 'selected' : '' %>></option>
+                    <option label="Clear" value="Clear" <%= pool.conditionPool==='Clear' ? 'selected' : '' %>>Clear</option>
+                    <option label="Blue/Cloudy (cannot see floor)" value="Blue/Cloudy (cannot see floor)" <%= pool.conditionPool==='Blue/Cloudy (cannot see floor)' ? 'selected' : '' %>>Blue/Cloudy (cannot see floor)</option>
+                    <option label="Milky Dead Algae" value="Milky Dead Algae" <%= pool.conditionPool==='Milky Dead Algae' ? 'selected' : '' %>>Milky Dead Algae</option>
+                    <option label="Hazy" value="Hazy" <%= pool.conditionPool==='Hazy' ? 'selected' : '' %>>Hazy</option>
+                    <option label="Algae - Green Cloudy" value="Algae - Green Cloudy" <%= pool.conditionPool==='Algae - Green Cloudy' ? 'selected' : '' %>>Algae - Green Cloudy</option>
+                    <option label="Algae - Green on Floor" value="Algae - Green on Floor" <%= pool.conditionPool==='Algae - Green on Floor' ? 'selected' : '' %>>Algae - Green on Floor</option>
+                    <option label="Discolored Water" value="Discolored Water" <%= pool.conditionPool==='Discolored Water' ? 'selected' : '' %>>Discolored Water</option>
+                    <option label="Stains" value="Stains" <%= pool.conditionPool==='Stains' ? 'selected' : '' %>>Stains</option>
+                    <option label="Fine Debris Settling on Floor" value="Fine Debris Settling on Floor" <%= pool.conditionPool==='Fine Debris Settling on Floor' ? 'selected' : '' %>>Fine Debris Settling on Floor</option>
+                </select>
+            </div>
+            <div class="max-w-full" id="conditionHt">
+                <label for="conditionHt" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Condition</label>
+                <select name="conditionHt"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                    <option label="" value="" <%= pool.conditionHt==='' ? 'selected' : '' %>></option>
+                    <option label="Clear" value="Clear" <%= pool.conditionHt==='Clear' ? 'selected' : '' %>>Clear</option>
+                    <option label="Cloudy" value="Cloudy" <%= pool.conditionHt==='Cloudy' ? 'selected' : '' %>>Cloudy</option>
+                    <option label="Foaming" value="Foaming" <%= pool.conditionHt==='Foaming' ? 'selected' : '' %>>Foaming</option>
+                    <option label="Odors" value="Odors" <%= pool.conditionHt==='Odors' ? 'selected' : '' %>>Odors</option>
+                    <option label="Stains" value="Stains" <%= pool.conditionHt==='Stains' ? 'selected' : '' %>>Stains</option>
+                    <option label="Discolored Water" value="Discolored Water" <%= pool.conditionHt==='Discolored Water' ? 'selected' : '' %>>Discolored Water</option>
+                    <option label="Scale" value="Scale" <%= pool.conditionHt==='Scale' ? 'selected' : '' %>>Scale</option>
+                    <option label="Biofilm" value="Biofilm" <%= pool.conditionHt==='Biofilm' ? 'selected' : '' %>>Biofilm</option>
+                </select>
+            </div>
+
+            <div class="max-w-full">
                 <label for="hhlBuild" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">HHL Build</label>
                 <div class="flex gap-x-3">
                     <div class="flex space-x-0.5">
@@ -125,21 +184,6 @@
                         <label for="hs-radio-group-3" class="text-sm text-gray-500 ms-3">Unknown</label>
                     </div>
                 </div>
-            </div>
-
-            <div class="sm:col-span-2">
-                <label for="assignedTo" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Assigned to</label>
-                <select id="assignedTo" name="assignedTo"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                    <option label="Colby" value="Colby" <%= pool.assignedTo==='Colby' ? 'selected' : '' %>>Colby</option>
-                    <option label="Jenn" value="Jenn" <%= pool.assignedTo==='Jenn' ? 'selected' : '' %>>Jenn</option>
-                    <option label="Jessica" value="Jessica" <%= pool.assignedTo==='Jessica' ? 'selected' : '' %>>Jessica</option>
-                    <option label="Amaya" value="Amaya" <%= pool.assignedTo==='Amaya' ? 'selected' : '' %>>Amaya</option>
-                    <option label="Ben" value="Ben" <%= pool.assignedTo==='Ben' ? 'selected' : '' %>>Ben</option>
-                    <option label="Hannah" value="Hannah" <%= pool.assignedTo==='Hannah' ? 'selected' : '' %>>Hannah</option>
-                    <option label="Jack" value="Jack" <%= pool.assignedTo==='Jack' ? 'selected' : '' %>>Jack</option>
-                    <option label="Jaime" value="Jaime" <%= pool.assignedTo==='Jaime' ? 'selected' : '' %>>Jaime</option>
-                </select>
             </div>
 
             <div class="sm:col-span-2">

@@ -42,6 +42,8 @@ router.post("/", ensureAuthenticated, async (req, res) => {
     lastName: req.body.lastName,
     number: req.body.number,
     email: req.body.email,
+    altNumber: req.body.altNumber,
+    altEmail: req.body.altEmail,
     bodyOfWater: req.body.bodyOfWater,
     status: req.body.status,
     description: req.body.description,
@@ -55,6 +57,8 @@ router.post("/", ensureAuthenticated, async (req, res) => {
     brand: req.body.brand,
     make: req.body.make,
     assignedTo: req.body.assignedTo,
+    conditionHt: req.body.conditionHt,
+    conditionPool: req.body.conditionPool,
   });
 
   saveImages(pool, req.body.cover);
@@ -96,6 +100,8 @@ router.put("/:id", ensureAuthenticated, async (req, res) => {
     pool.lastName = req.body.lastName;
     pool.number = req.body.number;
     pool.email = req.body.email;
+    pool.altNumber = req.body.altNumber;
+    pool.altEmail = req.body.altEmail;
     pool.bodyOfWater = req.body.bodyOfWater;
     pool.status = req.body.status;
     pool.description = req.body.description;
@@ -109,6 +115,8 @@ router.put("/:id", ensureAuthenticated, async (req, res) => {
     pool.brand = req.body.brand;
     pool.make = req.body.make;
     pool.assignedTo = req.body.assignedTo;
+    pool.conditionPool = req.body.conditionPool;
+    pool.conditionHt = req.body.conditionHt;
 
     if (req.body.removeImages) {
       const removeIndices = req.body.removeImages.map(Number);
