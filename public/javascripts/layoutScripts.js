@@ -32,10 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
     FilePondPluginFileEncode,
     FilePondPluginImagePreview,
     FilePondPluginImageExifOrientation,
-    FilePondPluginImageCrop,
-    FilePondPluginImageResize,
-    FilePondPluginImageTransform,
-    FilePondPluginImageEdit
+    FilePondPluginImageTransform
   );
 
   FilePond.create(document.querySelector(".filepond"), {
