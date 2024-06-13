@@ -71,6 +71,7 @@
                 <th class="text-left font-semibold text-gray-800 dark:text-white">Phone</th>
                 <th class="text-left font-semibold text-gray-800 dark:text-white">Status</th>
                 <th class="text-left font-semibold text-gray-800 dark:text-white">Assigned to</th>
+                <th class="text-left font-semibold text-gray-800 dark:text-white">YTD June 08</th>
                 <th class="text-right font-semibold text-gray-800 dark:text-white"></th>
             </tr>
         </thead>
@@ -83,6 +84,7 @@
                 <td class="py-4 select-all"><%= pool.number %></td>
                 <td class="py-4"><%= pool.status %></td>
                 <td class="py-4"><%= pool.assignedTo %></td>
+                <td class="py-4"><%= pool.yearToDate1 && ("$" + pool.yearToDate1) %></td>
                 <td class="py-4"><a href="/pools/<%= pool.id %>" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">View</a>/<a href="/pools/<%= pool.id %>/edit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a></td>
             </tr>
             <% }) %>

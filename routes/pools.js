@@ -59,6 +59,9 @@ router.post("/", ensureAuthenticated, async (req, res) => {
     assignedTo: req.body.assignedTo,
     conditionHt: req.body.conditionHt,
     conditionPool: req.body.conditionPool,
+    yearToDate1: req.body.yearToDate1,
+    yearToDate2: req.body.yearToDate2,
+    yearToDate3: req.body.yearToDate3,
   });
 
   saveImages(pool, req.body.cover);
@@ -117,6 +120,9 @@ router.put("/:id", ensureAuthenticated, async (req, res) => {
     pool.assignedTo = req.body.assignedTo;
     pool.conditionPool = req.body.conditionPool;
     pool.conditionHt = req.body.conditionHt;
+    pool.yearToDate1 = req.body.yearToDate1;
+    pool.yearToDate2 = req.body.yearToDate2;
+    pool.yearToDate3 = req.body.yearToDate3;
 
     if (req.body.removeImages) {
       const removeIndices = req.body.removeImages.map(Number);

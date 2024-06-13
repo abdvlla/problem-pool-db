@@ -8,7 +8,7 @@
 >
   <div class="border-t border-gray-200">
     <dl class="divide-y divide-gray-200">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 py-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 py-4">
         <div>
           <dt class="text-sm font-medium text-gray-900">Customer name</dt>
           <dd class="mt-1 text-sm text-gray-700">
@@ -30,7 +30,7 @@
           <dd class="mt-1 text-sm text-gray-700"><%= pool.altNumber %></dd>
         </div>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 py-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 py-4">
         <div>
           <dt class="text-sm font-medium text-gray-900">Current status</dt>
           <dd class="mt-1 text-sm text-gray-700 font-semibold underline">
@@ -56,7 +56,7 @@
           </dd>
         </div>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 py-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 py-4">
         <div>
           <dt class="text-sm font-medium text-gray-900">Body of water</dt>
           <dd class="mt-1 text-sm text-gray-700"><%= pool.bodyOfWater %></dd>
@@ -98,7 +98,23 @@
           <dd class="mt-1 text-sm text-gray-700"><%= pool.otherEquipment %></dd>
         </div>
       </div>
-      <div class="grid grid-cols-1 gap-8 py-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 py-4">
+        <div>
+          <dt class="text-sm font-medium text-gray-900">YTD (June 08)</dt>
+          <dd class="mt-1 text-sm text-gray-700">
+            <%= pool.yearToDate1 && "$" + pool.yearToDate1 %>
+          </dd>
+        </div>
+        <div id="">
+          <dt class="text-sm font-medium text-gray-900">YTD (TBD)</dt>
+          <dd class="mt-1 text-sm text-gray-700"><%= pool.yearToDate2 %></dd>
+        </div>
+        <div id="">
+          <dt class="text-sm font-medium text-gray-900">YTD (TBD)</dt>
+          <dd class="mt-1 text-sm text-gray-700"><%= pool.yearToDate3 %></dd>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 gap-8 py-4">
         <div>
           <dt class="text-sm font-medium text-gray-900">Description</dt>
           <dd class="mt-1 text-sm text-gray-700 whitespace-pre-line">

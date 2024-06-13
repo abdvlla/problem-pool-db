@@ -95,6 +95,18 @@ const poolSchema = new mongoose.Schema({
   conditionPool: {
     type: String,
   },
+
+  yearToDate1: {
+    type: String,
+  },
+
+  yearToDate2: {
+    type: String,
+  },
+
+  yearToDate3: {
+    type: String,
+  },
 });
 
 poolSchema.virtual("coverImagePath").get(function () {

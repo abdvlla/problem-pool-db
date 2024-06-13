@@ -5,7 +5,7 @@ $(document).ready(function () {
     language: {
       searchPlaceholder: "Search records",
     },
-    columnDefs: [{ searchable: false, orderable: false, targets: [6] }],
+    columnDefs: [{ searchable: false, orderable: false, targets: [7] }],
     initComplete: function () {
       var api = this.api();
 

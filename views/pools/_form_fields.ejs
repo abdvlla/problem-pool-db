@@ -166,6 +166,30 @@
                 </select>
             </div>
 
+            <div class="sm:col-span-2 grid grid-cols-3 space-x-2">
+                <div>
+                <label for="yearToDate1" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">YTD June 08</label>
+                <input type="number" name="yearToDate1" id="yearToDate1"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                    placeholder="Year to date as of 06-08" value="<%= pool.yearToDate1 %>">
+                </div>
+                <div>
+                    <label for="yearToDate2" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">YTD TBD</label>
+                    <input type="text" name="yearToDate2" id="yearToDate2" disabled
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                        placeholder="TBD" value="<%= pool.yearToDate2 %>">
+                    </div>
+                    <div>
+                        <label for="yearToDate3" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">YTD TBD</label>
+                        <input type="text" name="yearToDate3" id="yearToDate3" disabled
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            placeholder="TBD" value="<%= pool.yearToDate3 %>">
+                        </div>
+            </div>
+
+            
+
+
             <div class="max-w-full">
                 <label for="hhlBuild" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">HHL Build</label>
                 <div class="flex gap-x-3">
