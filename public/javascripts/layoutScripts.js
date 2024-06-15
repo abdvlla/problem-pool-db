@@ -1,7 +1,11 @@
 $(document).ready(function () {
   var table = $("#poolTable").DataTable({
-    lengthMenu: [10, 25, 50, 100],
+    lengthMenu: [
+      [-1, 10, 25, 50, 100],
+      ["All", 10, 25, 50, 100],
+    ],
     pagingType: "simple_numbers",
+    pageLength: 50,
     language: {
       searchPlaceholder: "Search records",
     },
